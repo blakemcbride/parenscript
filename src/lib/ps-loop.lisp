@@ -177,7 +177,7 @@
     (err "an atom after FROM" var))
   (let ((start (eat state))
         (op (loop-case from-key (:downfrom '-) (otherwise '+)))
-        (test-op (loop-case from-key (:downfrom '>=) (otherwise '<=)))
+        (test-op nil)
         (by nil)
         (end nil))
     (loop while (member (as-keyword (peek state)) '(:to :below :downto :above :by)) do
@@ -185,7 +185,7 @@
             (if (eq (as-keyword term) :by)
                 (setf by (eat state))
                 (setf op (loop-case term ((:downto :above) '-) (otherwise op))
-                      test-op (loop-case term (:to test-op) (:below '<) (:downto '>=) (:above '>))
+                      test-op (loop-case term (:to (loop-case from-key (:downfrom '>=) (otherwise '<=))) (:below '<) (:downto '>=) (:above '>))
                       end (eat state)))))
     (let ((test (when test-op
                   (list test-op var (maybe-hoist end state)))))
