@@ -1,3 +1,112 @@
+* Fix BREAKing out of LOOP
+https://github.com/vsedach/Parenscript/issues/43
+
+(ps:ps
+(defun foo (t1 t5)
+  (loop for t2 in t1
+     for t4 in t5
+     collect (loop for t3 in t2 collect t3))))
+
+generates
+
+function foo(t1, t5) {
+    __PS_MV_REG = [];
+    return (function () {
+        var _js54 = t1.length;
+        var _js56 = t5.length;
+        var collect57 = [];
+        var FIRST58 = true;
+        for (var _js53 = 0; _js53 < _js54; _js53 += 1) {
+            (function () {
+                var t2 = t1[_js53];
+                var _js55 = FIRST58 ? 0 : _js55 + 1;
+                if (_js55 >= _js56) {
+                    break;
+                };
+                var t4 = t5[_js55];
+                collect57.push((function () {
+                    var _js60 = t2.length;
+                    var collect61 = [];
+                    for (var _js59 = 0; _js59 < _js60; _js59 += 1) {
+                        var t3 = t2[_js59];
+                        collect61.push(t3);
+                    };
+                    __PS_MV_REG = [];
+                    return collect61;
+                })());
+                __PS_MV_REG = [];
+                return FIRST58 = null;
+            })();
+        };
+        __PS_MV_REG = [];
+        return collect57;
+    })();
+};
+
+Note that the entire outer-loop body is inside a js function but it still contains break statements.
+
+Reverting e6489e0 fixes this issue.
+
+This is reduced from a regression in real-world code.
+@jasom
+Collaborator Author
+jasom commented on Jan 11
+
+As ECMA script 6 supports block scoping via "let" the only way I see of implementing this would be to wrap the loop in a try and change the break to be a throw. Or we could just not support strict mode and go back to using with (which provides the scoping).
+@jasom
+Collaborator Author
+jasom commented on Jan 11 •
+
+Actually for this example "break" could be turned into "return" since the entire loop body is a function.
+
+The above doesn't terminate the loop; rather the loop would have to be inside the function and then break could just be used anyways. My comment below is still true.
+
+I don't know enough about the loop implementation to say if this works for the general case.
+@vsedach
+Owner
+vsedach commented on Jan 11
+ As ECMA script 6 supports block scoping via "let" the only way I
+ see of implementing this would be to wrap the loop in a try and
+ change the break to be a throw.
+Correct. I think Parenscript's LOOP is not doing a RETURN-FROM, which
+would generate a throw in cases like this.
+@jasom
+Collaborator Author
+jasom commented on Jan 17
+
+I locally fixd the BREAK to use RETURN-FROM and it gets worse; note that var _js55 = FIRST58 ? 0 : _js55 + 1; is inside the lambda, so js55 is zero on the first iteration and NaN thereafter.
+
+Previously only the non-gensymed variables were declared in the with block so the gensym variables took the outer scope; this obviously is not what happens when you replace the with with a lambda. The fix is likely going to involve hoisting those variable declarations out of the loop body; I'm busy with other things currently so it may take several days before I report back.
+* Fix multiple COLLECT clauses in LOOP
+https://github.com/vsedach/Parenscript/issues/46
+
+ phmarek commented 7 hours ago
+
+(ps:ps
+    (loop for i from 0 to 3
+          for ch = (char "abcde" i)
+          for p = (char-code ch)
+          collect (logand (ash p -1) 1)
+          collect (logand (ash p -0) 1)))
+
+results in
+
+(function () {
+    var collect41 = [];
+    var collect41 = [];
+    for (var i = 0; i <= 3; i += 1) {
+        var ch = char('abcde', i);
+        var p = charCode(ch);
+        collect41.push(p >> 1 & 1);
+        collect41.push(p >> 0 & 1);
+    };
+    __PS_MV_REG = [];
+    return collect41;
+})();
+
+Please note the duplicated var collect41 statements.
+
+I don't think this breaks JS, but at least it is ugly.
 * Add DOM3 and DOM4 symbols to PS-DHTML-SYMBOLS
   https://github.com/vsedach/Parenscript/issues/14
 * Merge ZEROP, FORMAT from https://github.com/mgi/Parenscript
