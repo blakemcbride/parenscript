@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 (in-package #:cl)
 (named-readtables:in-readtable :parenscript)
 

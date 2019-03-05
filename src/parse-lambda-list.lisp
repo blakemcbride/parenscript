@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2007 Red Daly
 
 ;;; SPDX-License-Identifier: BSD-3-Clause

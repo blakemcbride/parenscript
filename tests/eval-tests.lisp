@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2011-2012 Vladimir Sedach
 
 ;;; SPDX-License-Identifier: BSD-3-Clause

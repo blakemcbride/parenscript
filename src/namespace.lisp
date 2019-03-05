@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2007-2010 Vladimir Sedach
 ;;; Copyright 2008 Travis Cross
 

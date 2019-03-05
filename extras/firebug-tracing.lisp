@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;; SPDX-License-Identifier: BSD-3-Clause
 
 ;; Tracing macro courtesy of William Halliburton

@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2005-2006 Henrik Hjelte
 ;;; Copyright 2007-2012 Vladimir Sedach
 

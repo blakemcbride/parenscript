@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2005 Manuel Odendahl
 ;;; Copyright 2005-2006 Edward Marco Baringer
 ;;; Copyright 2007 Attila Lendvai

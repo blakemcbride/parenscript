@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2011 Vladimir Sedach
 ;;; Copyright 2014-2015 Boris Smilga
 ;;; Copyright 2014 Max Rottenkolber

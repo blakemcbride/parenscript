@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2009-2010 Daniel Gackle
 
 ;;; SPDX-License-Identifier: BSD-3-Clause

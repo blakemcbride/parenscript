@@ -1,3 +1,5 @@
+;;;; -*- encoding:utf-8 -*-
+
 ;;; Copyright 2009-2013 Daniel Gackle
 ;;; Copyright 2009-2012 Vladimir Sedach
 ;;; Copyright 2012, 2015 Boris Smilga
