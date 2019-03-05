@@ -1,0 +1,5 @@
+* Add DOM3 and DOM4 symbols to PS-DHTML-SYMBOLS
+  https://github.com/vsedach/Parenscript/issues/14
+* Merge ZEROP, FORMAT from https://github.com/mgi/Parenscript
+* Add ECMAScript 2015 support
+  https://github.com/pjstirling/Parenscript
