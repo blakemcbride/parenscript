@@ -268,7 +268,9 @@
                        ((:maximize :maximizing :minimize :minimizing) nil)
                        ((:collect :collecting :append :appending) '[])
                        ((:map :mapping) '{}))))
-    (push (list 'setf var initial) (prologue state)))
+    (pushnew (list 'setf var initial)
+             (prologue state)
+             :test #'equal))
   (loop-case kind
         ((:sum :summing)`(incf ,var ,item))
         ((:count :counting)`(when ,item (incf ,var))) ;; note the JS semantics - neither 0 nor "" will count
