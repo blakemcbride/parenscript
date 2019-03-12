@@ -37,6 +37,24 @@
           (setf idx (1+ idx)))
         result))
 
+    (defun stringp (v)
+      (string= (typeof v) "string"))
+
+    (defun characterp (v)
+      (string= (typeof v) "string"))
+
+    (defun zerop (num)
+      "Return whether NUM is zero."
+      (= num 0))
+
+    (defun plusp (num)
+      "Return whether NUM is positive."
+      (> num 0))
+
+    (defun minusp (num)
+      "Return whether NUM is negative."
+      (< num 0))
+
     (defun member (item arr)
       "Check if ITEM is a member of ARR."
       (dolist (el arr)
