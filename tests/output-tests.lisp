@@ -652,6 +652,20 @@ while (film.isNotFinished()) {
 };
 }).call(this);")
 
+(test-ps-js iteration-constructs-10
+  (loop for i from 1 while (foo))
+"(function () {
+    for (var i = 1; foo(); i += 1) {
+    };
+})();")
+
+(test-ps-js iteration-constructs-11
+  (loop for i from 1)
+"(function () {
+    for (var i = 1; true; i += 1) {
+    };
+})();")
+
 (test-ps-js loop-for-bindings
   (loop :for ((a b) (:c :d)) :in arr :do (foo a b c d))
 "(function () {
