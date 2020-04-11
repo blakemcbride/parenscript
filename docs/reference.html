@@ -1021,6 +1021,15 @@ blafoo(i);</samp></pre>
     </p>
 
     <p>
+      To prevent spurious errors
+      in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">ECMAScript
+      5 strict mode scripts</a>, the backing variable for multiple
+      values must be globally declared at the start of strict mode
+      scripts:
+      <code>(defvar __PS_MV_REG)</code>
+    </p>
+
+    <p>
       <code>APPLY</code> is a macro that expands into a call to the
       JavaScript <code>apply</code> method.
     </p>
