@@ -77,36 +77,6 @@ jasom commented on Jan 17
 I locally fixd the BREAK to use RETURN-FROM and it gets worse; note that var _js55 = FIRST58 ? 0 : _js55 + 1; is inside the lambda, so js55 is zero on the first iteration and NaN thereafter.
 
 Previously only the non-gensymed variables were declared in the with block so the gensym variables took the outer scope; this obviously is not what happens when you replace the with with a lambda. The fix is likely going to involve hoisting those variable declarations out of the loop body; I'm busy with other things currently so it may take several days before I report back.
-* Fix multiple COLLECT clauses in LOOP
-https://github.com/vsedach/Parenscript/issues/46
-
- phmarek commented 7 hours ago
-
-(ps:ps
-    (loop for i from 0 to 3
-          for ch = (char "abcde" i)
-          for p = (char-code ch)
-          collect (logand (ash p -1) 1)
-          collect (logand (ash p -0) 1)))
-
-results in
-
-(function () {
-    var collect41 = [];
-    var collect41 = [];
-    for (var i = 0; i <= 3; i += 1) {
-        var ch = char('abcde', i);
-        var p = charCode(ch);
-        collect41.push(p >> 1 & 1);
-        collect41.push(p >> 0 & 1);
-    };
-    __PS_MV_REG = [];
-    return collect41;
-})();
-
-Please note the duplicated var collect41 statements.
-
-I don't think this breaks JS, but at least it is ugly.
 * Add DOM3 and DOM4 symbols to PS-DHTML-SYMBOLS
   https://github.com/vsedach/Parenscript/issues/14
 * Merge ZEROP, FORMAT from https://github.com/mgi/Parenscript
