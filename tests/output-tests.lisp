@@ -867,6 +867,18 @@ for (var _js1 = 0; _js1 < _js2; _js1 += 1) {
     return collect3;
 })();")
 
+(test-ps-js loop-collect-twice
+    (loop collect x collect (1+ x))
+"(function () {
+    var collect1 = [];
+    while (true) {
+        collect1.push(x);
+        collect1.push(x + 1);
+    };
+    __PS_MV_REG = [];
+    return collect1;
+})();")
+
 (test-ps-js loop-append
    (loop :for a :in b :append a)
 "(function () {
