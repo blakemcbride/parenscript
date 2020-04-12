@@ -4,6 +4,8 @@
 ;;; Copyright 2009-2012 Vladimir Sedach
 ;;; Copyright 2012, 2015 Boris Smilga
 ;;; Copyright 2018 Neil Lindquist
+;;; Copyright 2019, Philipp Marek
+;;; Copyright 2019, Jason Miller
 
 ;;; SPDX-License-Identifier: BSD-3-Clause
 

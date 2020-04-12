@@ -1,6 +1,11 @@
 ;;;; -*- encoding:utf-8 -*-
 
-;; SPDX-License-Identifier: BSD-3-Clause
+;;; Copyright 2005 Manuel Odendahl
+;;; Copyright 2005-2006 Edward Marco Baringer
+;;; Copyright 2009-2011, 2018-2019 Vladimir Sedach
+;;; Copyright 2019 Philipp Marek
+
+;;; SPDX-License-Identifier: BSD-3-Clause
 
 (in-package #:parenscript)
 

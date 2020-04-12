@@ -1,7 +1,8 @@
 ;;;; -*- encoding:utf-8 -*-
 
 ;;; Copyright 2005-2006 Henrik Hjelte
-;;; Copyright 2007-2012 Vladimir Sedach
+;;; Copyright 2007-2012, 2018, 2020 Vladimir Sedach
+;;; Copyright 2019 Jason Miller
 
 ;;; SPDX-License-Identifier: BSD-3-Clause
 
