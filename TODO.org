@@ -1,3 +1,7 @@
+* ChangeLog and NEWS files
+  git2cl
+* Replace :use in packages with explicit imports
+* ASDF3 test-op and best practices for system definitions
 * Fix BREAKing out of LOOP
 https://github.com/vsedach/Parenscript/issues/43
 
