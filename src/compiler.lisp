@@ -43,7 +43,7 @@
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
 (in-package #:parenscript)
-(in-readtable :parenscript)
+(named-readtables:in-readtable :parenscript)
 
 (defvar *version* 2.7 "Parenscript compiler version.")
 

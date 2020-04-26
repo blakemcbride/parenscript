@@ -55,7 +55,7 @@
 (named-readtables:in-readtable :parenscript)
 
 (defpackage #:parenscript
-  (:use #:cl #:anaphora #:named-readtables)
+  (:use #:cl #:anaphora)
   (:nicknames #:ps)
   (:export
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

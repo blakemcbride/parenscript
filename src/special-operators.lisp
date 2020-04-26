@@ -39,7 +39,7 @@
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
 (in-package #:parenscript)
-(in-readtable :parenscript)
+(named-readtables:in-readtable :parenscript)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; arithmetic and logic

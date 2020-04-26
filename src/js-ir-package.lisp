@@ -36,7 +36,7 @@
 
 
 (in-package #:parenscript)
-(in-readtable :parenscript)
+(named-readtables:in-readtable :parenscript)
 
 (defpackage #:ps-js
   (:use)

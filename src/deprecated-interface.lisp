@@ -41,7 +41,7 @@
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
 (in-package #:parenscript)
-(in-readtable :parenscript)
+(named-readtables:in-readtable :parenscript)
 
 (defun warn-deprecated (old-name &optional new-name)
   (warn 'simple-style-warning
