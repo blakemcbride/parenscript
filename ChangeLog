@@ -1,0 +1,4877 @@
+2020-04-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/deprecated-interface.lisp,
+	src/function-definition.lisp, src/js-dom-symbol-exports.lisp,
+	src/js-ir-package.lisp, src/macros.lisp, src/namespace.lisp,
+	src/non-cl.lisp, src/package.lisp, src/printer.lisp,
+	src/special-operators.lisp: Stop :use-ing NAMED-READTABLES package
+
+2020-04-26  Vladimir Sedach <vas@oneofus.la>
+
+	* TODO.org: Added some more items to the TODO file
+
+2020-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, runtime/ps-runtime-lib.lisp,
+	src/lib/ps-loop.lisp, tests/output-tests.lisp: Updated dates on
+	reference manual and copyright notices
+
+2020-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Added note about __PS_MV_REG in strict mode.
+	Thanks to Bill St. Clair
+
+2019-12-31  Jason Miller <aidenn0@geocities.com>
+
+	* tests/output-tests.lisp: Add tests for limitless for-as-arithmetic
+	loop
+
+2019-01-14  Jason Miller <aidenn0@geocities.com>
+
+	* src/lib/ps-loop.lisp: Fix for-as-arithmetic loop clause when no
+	limit is present When negative looping was added (7d2536d8dbd1) it broke cases like:     (loop for i from x ...) Instead of omitting the test it would instead add a test of (i <
+	null).  This patch corrects the bug that was introduced
+
+2020-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* TODO.org: Removed Fix multiple COLLECT clauses in LOOP from TODO
+
+2020-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/output-tests.lisp: Added unit test for 83e1cda fix for LOOP
+	collect redundant initialization
+
+2019-03-12  Philipp Marek <philipp@marek.priv.at>
+
+	* runtime/ps-runtime-lib.lisp: Provide STRINGP, CHARACTERP, ZEROP,
+	PLUSP, and MINUSP.
+
+2019-03-06  Philipp Marek <philipp@marek.priv.at>
+
+	* src/lib/ps-loop.lisp: Avoid initializing the same JS variable
+	multiple times.  Example input of   (ps:ps     (loop ...            collect ...            collect ...)) resulted in         (function () {             var collect41 = [];             var collect41 = [];             ...
+
+2020-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* ros-tests.lisp: Added script for running tests in multiple
+	implementations using Roswell
+
+2019-10-15  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Updated copyright notice year in reference
+	manual
+
+2019-10-15  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Fixed two broken anchor links in the
+	reference manual
+
+2019-10-15  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: In reference manual, MAP-UNTIL should be
+	MAP-INTO Thanks to Daniel Lowe for the bug report
+
+2019-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* TODO.org: Added recent LOOP issues reported on Github to TODO file
+
+2019-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* TODO.org: Added a TODO file
+
+2019-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/firebug-tracing.lisp, extras/swank-parenscript.lisp,
+	parenscript.asd, parenscript.tests.asd,
+	runtime/ps-runtime-lib.lisp, src/compilation-interface.lisp,
+	src/compiler.lisp, src/deprecated-interface.lisp,
+	src/function-definition.lisp, src/js-dom-symbol-exports.lisp,
+	src/js-ir-package.lisp, src/lib/ps-dom.lisp, src/lib/ps-html.lisp,
+	src/lib/ps-loop.lisp, src/macros.lisp, src/namespace.lisp,
+	src/non-cl.lisp, src/package.lisp, src/parse-lambda-list.lisp,
+	src/printer.lisp, src/special-operators.lisp, src/utils.lisp,
+	tests/eval-tests.lisp, tests/output-tests.lisp,
+	tests/package-system-tests.lisp, tests/test-package.lisp,
+	tests/test.lisp: Added a UTF-8 encoding specifier to source files
+	for LispWorks
+
+2018-12-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/utils.lisp: Change
+	ENCODE-JS-IDENTIFIER warnings to SIMPLE-STYLE-WARNING
+
+2018-12-01  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/LICENSE, docs/reference.html, docs/tutorial.html: GNU Free
+	Documentation License for the reference manual and tutorial
+
+2018-11-09  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp: fixup! Fix initial value handling of
+	ps-runtime-lib's REDUCE
+
+2018-11-08  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp: Fix initial value handling of
+	ps-runtime-lib's REDUCE
+
+2018-11-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, tests/output-tests.lisp: Fix dynamic
+	scope multiple value return
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp, src/special-operators.lisp, src/utils.lisp: Fix
+	bug in SWITCH handling of nested blocks
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp: Added tests for new multiple value
+	functionality
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, tests/eval-tests.lisp,
+	tests/output-tests.lisp: Change (values) and equivalent to return
+	undefined, not null
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, tests/output-tests.lisp,
+	tests/package-system-tests.lisp: Fix dynamic returns getting
+	precedence over lexical ones
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/output-tests.lisp: Updated some unit tests for new MV
+	implementation
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp,
+	src/special-operators.lisp: Optimize out clearing MV register for
+	procedures that do not call other procedures
+
+2018-11-02  Vladimir Sedach <vas@oneofus.la>
+
+	* : Initial merge of Jason Miller's multiple value implementation
+
+2018-10-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, tests/eval-tests.lisp, tests/test.lisp: Added
+	ARRAYP, LISTP predicates Thanks to Paul M. Rodriguez for the patch.
+
+2018-10-27  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/non-cl.lisp, src/utils.lisp: Simplified
+	*JS-TARGET-VERSION* checks
+
+2018-10-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, tests/output-tests.lisp,
+	tests/package-system-tests.lisp: Undid
+	88c61599074dfaa40fae285f62f8910e0a201561 No longer going to parenthesize lambdas and objects at toplevel.
+	The REPL use case (the original motivation for parenthesizing at
+	toplevel[1]) is a not very compelling special case. Apparently,
+	MongoDB has some brain damage with parsing parenthesized
+	expressions, which is a more compelling use case, and a reason not
+	to parenthesize.  Thanks to Lukas Phaf for the bug report.  [1]
+
+	https://mailman.common-lisp.net/pipermail/parenscript-devel/2011-November/000838.html
+
+2018-10-26  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp, tests/output-tests.lisp: Misc. unit tests
+
+2018-10-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp: Simpler implementation of CHAIN
+
+2018-10-25  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp, tests/output-tests.lisp: Added some more
+	unit tests
+
+2018-10-25  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/special-operators.lisp,
+	tests/output-tests.lisp: Added DEFPARAMETER special form Thanks to Olaf Ruppert for the suggestion.
+
+2018-10-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/special-operators.lisp: Got rid
+	of *suppress-deprecation* crud Deprecated forms are no longer generated by LOOP or other macros
+
+2018-10-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp: Change class precedence of
+	simple-style-warning to work in CCL Thanks to Ben Hyde for the fix
+
+2018-10-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp: Rename EXPRESSIONIZE-RESULT to
+	RETURN-RESULT-OF
+
+2018-10-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, tests/output-tests.lisp: Fixed
+	implicit return of dynamic extent return-from
+
+2018-10-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/function-definition.lisp, src/macros.lisp,
+	src/special-operators.lisp, tests/eval-tests.lisp,
+	tests/output-tests.lisp: Fix one bug with bogus lexical block breaks
+	from inner lambdas
+
+2018-10-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp,
+	src/lib/ps-loop.lisp, src/special-operators.lisp, src/utils.lisp:
+	Got rid of the unnecessary crud around optimizing away .call(this)
+
+2018-10-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/deprecated-interface.lisp,
+	src/js-ir-package.lisp, src/lib/ps-loop.lisp, src/non-cl.lisp,
+	tests/output-tests.lisp: Deprecated WHILE special form in favor of
+	LOOP WHILE
+
+2018-10-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-operators.lisp,
+	tests/eval-tests.lisp, tests/output-tests.lisp: Hack replacement of
+	loop lexical scope capturing WITH with LAMBDA
+
+2018-10-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp: Fix unneeded expressionization of
+	RETURN of LOCALLY
+
+2018-10-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, tests/eval-tests.lisp, tests/output-tests.lisp,
+	tests/test.lisp: Bind DOLIST/DOTIMES var to nil before evaluating
+	result form
+
+2018-10-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, tests/output-tests.lisp: Misc. formatting
+	changes
+
+2018-10-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, tests/output-tests.lisp: MAYBE-ONCE-ONLY now
+	handles all kinds of macros
+
+2018-10-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Marked PS-ONCE-ONLY as deprecated
+
+2018-10-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, tests/output-tests.lisp: Fix MAYBE-ONCE-ONLY to
+	evaluate arguments in order given
+
+2018-10-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Made definition of ps-once-only easier to read
+
+2018-10-22  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/compiler.lisp, tests/output-tests.lisp:
+	Fixed MAYBE-ONCE-ONLY to handle symbol macros
+
+2018-10-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp, tests/output-tests.lisp: Олексій
+	Замковий's hack for writing arbitrary strings to Parenscript
+	output
+
+2018-10-21  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp, tests/output-tests.lisp: Added misc tests
+
+2018-10-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, tests/output-tests.lisp: Better output of
+	Unicode strings
+
+2018-10-21  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/macros.lisp, tests/eval-tests.lisp: Made
+	CASE treat symbol literals as strings, behave more like CL
+
+2018-10-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, tests/eval-tests.lisp: Make RANDOM generate
+	floats correctly
+
+2018-10-20  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp, tests/output-tests.lisp: Added more unit
+	tests
+
+2018-10-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Updated *version*, which has been neglected
+	since 2.3
+
+2018-10-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/function-definition.lisp, src/special-operators.lisp: Fixed
+	loop capture of renamed lexical variables
+
+2018-10-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/function-definition.lisp, src/special-operators.lisp,
+	tests/eval-tests.lisp, tests/output-tests.lisp: Fixed capture of
+	loop variables, up to let renaming
+
+2018-10-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-operators.lisp,
+	tests/output-tests.lisp: Fix RETURN trying to grab declarations from
+	body-less let/flet/etc
+
+2018-10-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/function-definition.lisp, src/macros.lisp,
+	src/special-operators.lisp, tests/eval-tests.lisp,
+	tests/output-tests.lisp: Fix: (lambda () "str") to return "str", not
+	treat "str" as docstring
+
+2018-10-15  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp, tests/output-tests.lisp: Added misc unit
+	tests
+
+2018-10-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/lib/ps-html.lisp, src/lib/ps-loop.lisp,
+	src/macros.lisp, src/namespace.lisp, src/package.lisp,
+	src/special-operators.lisp, src/utils.lisp, tests/output-tests.lisp:
+	Added compatibility for :preserve readtable-case (Allegro modern)
+
+2018-10-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, tests/output-tests.lisp,
+	tests/package-system-tests.lisp: Added a couple of unit tests
+
+2018-10-10  Vladimir Sedach <vas@oneofus.la>
+
+	* COPYING, src/compilation-interface.lisp, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/function-definition.lisp,
+	src/js-dom-symbol-exports.lisp, src/js-ir-package.lisp,
+	src/lib/ps-dom.lisp, src/lib/ps-html.lisp, src/lib/ps-loop.lisp,
+	src/macros.lisp, src/namespace.lisp, src/non-cl.lisp,
+	src/package.lisp, src/parse-lambda-list.lisp, src/printer.lisp,
+	src/special-operators.lisp, src/utils.lisp, tests/eval-tests.lisp,
+	tests/output-tests.lisp, tests/package-system-tests.lisp,
+	tests/test.lisp: Added copyright and license notices to source files
+
+2018-10-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, tests/output-tests.lisp, tests/test.lisp: Make
+	sure double quotes inside strings are always escaped
+
+2018-10-09  Vladimir Sedach <vas@oneofus.la>
+
+	* README: README: send patches to the mailing list
+
+2018-10-09  Vladimir Sedach <vas@oneofus.la>
+
+	* README: Updated README with contributing instructions
+
+2018-10-09  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/test.lisp: Clean up some CL-JS test code
+
+2018-10-09  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp, tests/output-tests.lisp,
+	tests/package-system-tests.lisp, tests/test-package.lisp,
+	tests/test.lisp: Tests: Refer to fiveam symbols by package,
+	run-tests runs top-level suite
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/output-tests.lisp, tests/package-system-tests.lisp,
+	tests/test.lisp: Simplified test whitespace normalization
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/eval-tests.lisp: Eval test for existing symbol-macrolet
+	functionality
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* .dir-locals.el: Emacs dir-local indenting hint for test-js-eval
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/output-tests.lisp: Added a few output tests for existing
+	functionality
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/output-tests.lisp: Removed explicit return-from in CASE
+	tests
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* .dir-locals.el: Added Emacs dir-local lisp-indent-rule for
+	test-ps-js
+
+2018-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* tests/output-tests.lisp, tests/package-system-tests.lisp: Tests to
+	clarify behavior of SYMBOL-MACROLET wrt CREATE and GETPROP
+
+2018-10-06  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.tests.asd, tests/test-package.lisp: Go back to using
+	FiveAM for unit tests
+
+2018-10-06  Vladimir Sedach <vas@oneofus.la>
+
+	* README: Added instructions on running unit tests to README
+
+2018-10-06  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.test.asd => parenscript.tests.asd,
+	tests/eval-tests.lisp, tests/output-tests.lisp,
+	tests/package-system-tests.lisp, tests/test-package.lisp,
+	tests/test.lisp: Long, unambiguous names for test packages
+
+2018-10-06  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.test.asd, {t => tests}/eval-tests.lisp, {t =>
+	tests}/output-tests.lisp, {t => tests}/package-system-tests.lisp,
+	{t => tests}/test-package.lisp, {t => tests}/test.lisp: Renamed 't'
+	directory to 'tests'
+
+2018-10-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp: Fix nconc clobbering of (declare
+	(special …)) declarations
+
+2018-10-01  Vladimir Sedach <vas@oneofus.la>
+
+	* t/output-tests.lisp: Added another unit test for &whole macro
+	lambda-list keyword
+
+2018-08-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Fix deprecation warnings for symbols like foo.bar
+	and foo[bar] Thanks to appleby for the bug report.
+	https://github.com/vsedach/Parenscript/issues/41
+
+2018-08-26  Vladimir Sedach <vas@oneofus.la>
+
+	* .dir-locals.el: Revise Emacs dir-locals.  Coding cannot be a dir-local. No tabs. Narrow fill column by 1.
+
+2018-07-08  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, t/eval-tests.lisp: Updated reference manual
+	with info about BLOCK and RETURN
+
+2018-07-08  Vladimir Sedach <vas@oneofus.la>
+
+	* .dir-locals.el: Added .dir-locals file with formatting guidelines
+
+2018-07-08  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/introduction.lisp: Updated docs/introduction.lisp
+
+2018-07-07  Vladimir Sedach <vas@oneofus.la>
+
+	* README, README.md, docs/tutorial.html: Updated README, got rid of
+	redundant README.md
+
+2018-07-07  Vladimir Sedach <vas@oneofus.la>
+
+	* .boring: Deleted darcs vestige .boring file
+
+2018-07-07  Vladimir Sedach <vas@oneofus.la>
+
+	* COPYING, extras/firebug-tracing.lisp, extras/js-expander.el,
+	extras/swank-parenscript.lisp, parenscript.asd,
+	runtime/ps-runtime-lib.lisp, src/compilation-interface.lisp,
+	src/compiler.lisp, src/deprecated-interface.lisp,
+	src/function-definition.lisp, src/js-dom-symbol-exports.lisp,
+	src/js-ir-package.lisp, src/lib/ps-dom.lisp, src/lib/ps-html.lisp,
+	src/lib/ps-loop.lisp, src/macros.lisp, src/namespace.lisp,
+	src/non-cl.lisp, src/package.lisp, src/parse-lambda-list.lisp,
+	src/printer.lisp, src/special-operators.lisp, src/utils.lisp,
+	t/eval-tests.lisp, t/output-tests.lisp,
+	t/package-system-tests.lisp, t/test.lisp: Clarified that the license
+	is BSD 3-clause. Added SPDX identifiers
+
+2018-06-29  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Updated reference manual list of boolean
+	operators
+
+2018-06-29  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #38 from WarrenWilkinson/master Move *ps-gensym-counter* to stop compile warning
+
+2018-06-08  Warren Wilkinson <wwilkinson@dwavesys.com>
+
+	* src/compiler.lisp: Move *ps-gensym-counter* to stop compile
+	warning
+
+2018-03-29  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.html: Fix ambiguities in tutorial slideshow and add
+	404 handling
+
+2018-03-28  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Fixed last updated date on reference manual
+
+2018-03-28  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Markup and spelling corrections to the
+	reference manual
+
+2018-03-28  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.html: Updated tutorial
+
+2018-03-28  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.html: Added old tutorial to source control
+
+2018-02-03  Vladimir Sedach <vsedach@users.noreply.github.com>
+
+	* : Merge pull request #37 from neil-lindquist/improve-ps-loop Improve loop
+
+2018-01-31  Neil Lindquist <archer1mail@gmail.com>
+
+	* src/lib/ps-loop.lisp: Add -ing forms of accumulation variables
+
+2018-01-31  Neil Lindquist <archer1mail@gmail.com>
+
+	* src/lib/ps-loop.lisp: Add :initially and :downfrom
+
+2017-02-09  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #33 from jasom/ps-dom-fixes Correct two keywords in ps-dom.lisp
+
+2017-02-09  Javier Olaechea <pirata@gmail.com>
+
+	* docs/reference.html: Fix symbol conversion in example code
+
+2016-12-05  Jason Miller <jason@milr.com>
+
+	* : Merge pull request #30 from PuercoPop/update-docs Update the Arithmetic and Boolean section of the reference
+	documentation
+
+2016-08-29  Javier Olaechea <pirata@gmail.com>
+
+	* docs/reference.html: Reference: Update the Arith. and Boolean
+	section
+
+2016-08-29  Javier Olaechea <pirata@gmail.com>
+
+	* docs/reference.html: reference.html: = is converted to ===, not =
+
+2016-03-17  Jason Miller <jason@milr.com>
+
+	* : Merge pull request #28 from TatriX/master Create README.md
+
+2016-03-15  TatriX <tatrics@gmail.com>
+
+	* README.md: Create README.md
+
+2016-02-17  Jason Miller <aidenn0@geocities.com>
+
+	* src/macros.lisp, src/special-operators.lisp: Improve
+	multiple-value support Previously multiple-values were very fragile.  Examples of things that didn't work, but now do:   (multiple-value-bind (x y) (values 1 2) y)   (defun foo () (values 1 2))   (defun bar () foo)   (multiple-value-bind (x y) (bar) y) Biggest downside of this change is that every return statement must
+	be prefixed by a clearing of the MV register.
+
+2015-06-09  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/compiler.lisp, src/function-definition.lisp,
+	src/lib/ps-loop.lisp, src/special-operators.lisp,
+	t/output-tests.lisp: Additions to 116f9ca9, to not replace Φ() with
+	Φ.call(this) unless Φ refers to this. Also, fixed / added tests.
+
+2015-06-09  Boris Smilga <boris.smilga@gmail.com>
+
+	* : Merge pull request #19 from jasom/master Preserve "this" in implicit lambdas
+
+2015-02-10  Boris Smilga <boris.smilga@gmail.com>
+
+	* : Merge pull request #16 from agrostis/upstream-quater Fix for https://github.com/vsedach/Parenscript/issues/15
+
+2015-02-04  Boris Smilga <boris.smilga@gmail.com>
+
+	* : Merge pull request #9 from agrostis/upstream Added support for getters and setters in object literals (when
+	*js-target-version* ≥ 1.8.5).
+
+2015-02-03  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/compilation-interface.lisp, src/utils.lisp: Added
+	version-string comparison functions.
+
+2015-01-13  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #13 from agrostis/upstream-quater Fixed unparenthesized comma-sequences in for(;;) variable
+	initializer expressions inside blocks.
+
+2015-01-13  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #8 from agrostis/master Fix to have RETURN-FROM a nested block in tail context behave as
+	RETURN-FROM the outer block
+
+2015-01-13  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #11 from agrostis/upstream-bis Fixed: empty-body clauses in COND should evaluate to the result of
+	the test.
+
+2014-12-26  Boris Smilga <boris.smilga@gmail.com>
+
+	* : Merge remote-tracking branch 'upstream/master' into upstream-ter Conflicts:         src/function-definition.lisp
+
+2014-12-26  Boris Smilga <boris.smilga@gmail.com>
+
+	* : Merge remote-tracking branch 'upstream/master' into upstream
+
+2014-12-25  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/function-definition.lisp, src/macros.lisp,
+	src/special-operators.lisp, t/output-tests.lisp: Improved handling
+	of declarations.  1. Named function bodies in Common Lisp may contain multiple DECLARE    forms before or after the docstring (or even before *and* after).     This feature is important for meta-programming by macros, and so    PS should also support it.  2. Declarations should be allowed in PS forms whose Lisp namesakes    allow them, to wit: in the macros WITH-SLOTS,
+	   MULTIPLE-VALUE-BIND, DO*, DO, DOTIMES, DOLIST,
+	   DESTRUCTURING-BIND, LET*, DEFUN, DEFSETF, and in the special forms
+	   LET, FLET, LABELS (letting out DEFMACRO, MACROLET, SYMBOL-MACROLET
+	   who are not translated to JavaScript). Before the present commit,
+	   most of them didn't handle declarations correctly.  3. Individual DECLARE forms should be allowed to contain multiple    declaration specifiers, in particular, multiple SPECIAL
+	   specifiers.  WITH-DECLARATION-EFFECTS used to ignore SPECIALs
+	   after the first one.  4. This commit also introduces LOCALLY as PS form because it    simplifies the implementation of stuff from (2).
+
+2014-12-21  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #6 from lemaster/master Added support for output of asm.js compatible code.
+
+2014-12-21  Vladimir Sedach <vas@oneofus.la>
+
+	* : Merge pull request #2 from pjstirling/master Fixed DEFPSMACRO and DEFINE-PS-SYMBOL-MACRO
+
+2014-12-16  Francis St-Amour <fr.stamour@gmail.com>
+
+	* src/non-cl.lisp: Fixed issue: *js-string-delimiter* was not
+	properly forwarded in (lisp ...) forms.  For example: (ps-inline (alert (lisp "21"))) Would give "javascript:alert('21')" instead of
+	"javascript:alert(\"21\")".
+
+2014-12-15  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/js-ir-package.lisp, src/non-cl.lisp, src/printer.lisp,
+	t/output-tests.lisp: Added support for getters and setters in object
+	literals.  Getters and setter are defined in ECMAScript 5.1 sec. 11.1.5.  A getter would be specified in a (CREATE ...) form as a name-value
+	pair of the form (GET <NAME>) <EXPR>, where <NAME> is a symbol
+	naming the object slot, and <EXPR> is the body of the getter.  A setter would be specified as a name-value pair of the form (SET
+	<NAME> <NEW-PARAM>) <EXPR>, where <NAME> is a symbol naming the
+	object slot, <NEW-PARAM> is a symbol naming the setter's formal
+	parameter for the assignment value, and <EXPR> is the body of the
+	setter.
+
+2014-10-01  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/special-operators.lisp: Fixed: RETURN-FROM a nested block in
+	tail context should behave as RETURN-FROM the outer block.  See https://groups.google.com/forum/#!topic/parenscript/eQ4NS5lslHE
+	for a more detailed description of the bug.
+
+2014-07-10  Fred LeMaster <fred.lemaster@gmail.com>
+
+	* src/js-ir-package.lisp, src/printer.lisp,
+	src/special-operators.lisp: Added support for output of asm.js
+	compatible code.  Added a unary-plus to the IR and removed the automatic conversion of
+	(setf x (logior x 0)) to "x |= 0;".
+
+2014-03-13  Max Rottenkolber <max@mr.gy>
+
+	* src/function-definition.lisp: Removed obsolete PROGN in
+	PARSE-EXTENDED-FUNCTION &REST handling.
+
+2014-02-23  Max Rottenkolber <eugeneia@users.noreply.github.com>
+
+	* t/output-tests.lisp: Updated tests for changed &REST
+	implementation.
+
+2014-02-23  Max Rottenkolber <eugeneia@users.noreply.github.com>
+
+	* src/function-definition.lisp: Simplified &REST implementation.  I think using the built in Array.slice is the saner choice here.
+
+2014-02-21  Peter Stirling <peter@pjstirling.plus.com>
+
+	* src/compiler.lisp: fixed DEFPSMACRO and DEFINE-PS-SYMBOL-MACRO to
+	ensure that any macros defined with them will be expanded properly
+	when needed in the same file
+
+2013-10-27  Vladimir Sedach <vas@oneofus.la>
+
+	* COPYING, README: Added README file
+
+2013-02-23  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/function-definition.lisp, src/macros.lisp, src/printer.lisp,
+	src/special-operators.lisp: Whitespace
+
+2013-02-27  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/function-definition.lisp, src/lib/ps-loop.lisp,
+	src/macros.lisp, src/non-cl.lisp, src/printer.lisp,
+	src/special-operators.lisp, t/output-tests.lisp: Minor refactoring;
+	comments.
+
+2013-03-03  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/deprecated-interface.lisp, src/lib/ps-loop.lisp: Undeprecated
+	BIND because it is used by LOOP; moved BIND and BIND* into
+	ps-loop.lisp.
+
+2013-03-06  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/deprecated-interface.lisp, src/special-operators.lisp:
+	Suppress inappropriate deprecation warnings that were arising during
+	the poor-man's codewalking of try-expressionizing-if?.  Example:   (try-expressionizing-if? '(for-in (label (foo)))) The codewalker macroexpands (label (foo)) even though it is not a
+	macro invocation. Since LABEL is a deprecated macro, a warning was
+	leaking through.
+
+2013-03-02  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp: Deleted dead code
+
+2013-02-23  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-operators.lisp: Minor refactoring: hide multiple-value
+	vs. single-value distinction inside RETURN-EXP so it presents one
+	interface to the outside world.  This makes the implementation of source mappings a little easier.
+
+2013-02-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/function-definition.lisp: Minor refactoring: made the order of
+	bindings in LABELS the same as in FLET so the symmetry between the
+	two is more apparent.
+
+2013-02-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp, t/output-tests.lisp: Minor refactoring: removed
+	unused gensym (was producing a compiler warning in CCL.)
+
+2013-03-01  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp, t/output-tests.lisp: Fixed bug: multiple
+	evaluation in WITH-SLOTS.
+
+2013-02-24  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/printer.lisp: Refactoring: got rid of PARENTHESIZE-EQUALITY.  There is no need for PARENTHESIZE-EQUALITY as distinct from
+	PRINT-OP-ARGUMENT, because the latter always parenthesizes equality
+	expressions when they are an operand in some other equality
+	expression. (In such a case, OP and ARG-OP have the same precedence,
+	and neither is associative.)
+
+2013-02-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug in PS-LOOP: test conditions in
+	FOR..OF clauses were being dropped.  Unfortunately, CL-JS doesn't compile for..in loops, so a unit test
+	can't currently be added for this. (I reported the issue to the
+	CL-JS project on Github.)
+
+2013-02-01  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp, t/eval-tests.lisp: Fixed bug: PS LOOP's
+	implementation assumed that all iteration clauses come before all
+	body clauses, and this is not the case. See added tests.
+
+2013-02-01  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp, t/eval-tests.lisp: Refactoring of
+	ps-loop.lisp, added loop tests.
+
+2013-01-31  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug in ps-loop: count clause was
+	counting falses.
+
+2013-01-31  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp, t/eval-tests.lisp: Minor refactoring,
+	renames, whitespace.
+
+2013-01-30  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/package.lisp: Export maybe-once-only, since it's preferable
+	almost everywhere to ps-once-only.
+
+2013-01-30  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-operators.lisp: Ignore no-op LETs (i.e. LET with empty
+	binding list) when deciding whether or not to expressionize an IF.
+
+2012-11-28  Vladimir Sedach <vas@oneofus.la>
+
+	* t/output-tests.lisp: Fixed output test trig-bind1 to be consistent
+	between Lisps that know that (floor 3.14) is a constant and those
+	that don't
+
+2012-11-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, t/output-tests.lisp: Replaced let of ps-gensyms
+	with with-ps-gensysms in make-array
+
+2012-11-28  Vladimir Sedach <vas@oneofus.la>
+
+	* t/eval-tests.lisp: Added eval unit tests for Boris Smilga's
+	Lisp-like initialization options for MAKE-ARRAY patch and nested
+	LETs
+
+2012-11-13  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/macros.lisp, t/output-tests.lisp: Lisp-like initialization
+	options for MAKE-ARRAY.
+
+2012-11-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, t/output-tests.lisp: Simplified output of APPLY
+	for code like (apply (@ an-object foo) nil) where the object is a
+	simple symbol
+
+2012-11-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/package.lisp: Removed 'apply-to' macro
+	introduced in 7f27b5b10ec4413713091c19bdce802a0e42bc6b
+
+2012-10-19  Boris Smilga <boris.smilga@gmail.com>
+
+	* t/output-tests.lisp: Unit tests for APPLY as used with object
+	methods.
+
+2012-10-17  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/macros.lisp, src/package.lisp: Method functions should be
+	applied to their host objects as thisArgs, rather than to the
+	callers' this.  Also, we might want a way to apply functions to whatever thisArg we
+	like.
+
+2012-10-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Reorganized symbol listing in package.lisp to
+	make it easier to see what's defined and not from the CL symbols
+
+2012-10-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/macros.lisp: Deprecated BIND
+	and BIND* macros
+
+2012-10-10  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, parenscript.test.asd: Added :description to asd
+	files
+
+2012-10-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp: suppress-values? special variable nil
+	by default
+
+2012-10-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/macros.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp, t/test-package.lisp, t/test.lisp: Converted
+	other trig functions to use maybe-once-only
+
+2012-10-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-operators.lisp, src/utils.lisp,
+	t/eval-tests.lisp: First try at a maybe-once-only macro that doesn't
+	introduce bindings for constant and variable expressions in PS code
+
+2012-10-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/package.lisp, t/eval-tests.lisp: Added MOD
+
+2012-09-22  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, {src => extras}/swank-parenscript.lisp: Moved
+	swank-parenscript.lisp to extras and added note about it in
+	reference manual
+
+2012-09-22  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Updated last modified date in reference
+	manual
+
+2012-09-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/lib/ps-loop.lisp, src/non-cl.lisp,
+	src/special-operators.lisp, t/output-tests.lisp: Fixed problem with
+	loop-return-arg and loop bodies getting double compiled by getting
+	rid of loop-return-arg. Thanks to Daniel Gackle for the bug report.
+
+2012-09-13  Daniel Gackle <danielgackle@gmail.com>
+
+	* t/eval-tests.lisp: Added a failing test to capture bug involving
+	inconsistent gensym suffixes when returning from a loop with more
+	than one FOR clause.
+
+2012-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/macros.lisp, t/eval-tests.lisp: Macro
+	keys in CASE forms now macroexpanded (thanks to Daniel Gackle for
+	the suggestion)
+
+2012-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp, src/macros.lisp,
+	src/special-operators.lisp, t/eval-tests.lisp, t/output-tests.lisp:
+	Removed the pass-through capability from the new global
+	variable-based multiple value return system and prettied up
+	associated code generation.
+
+2012-09-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/eval-tests.lisp: Ok, an actual test case of a nonlocal return
+	that would fail with global variables
+
+2012-09-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/eval-tests.lisp: Set MV and throw test case
+
+2012-09-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/eval-tests.lisp: More test cases for mv-return
+
+2012-09-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp, src/macros.lisp,
+	src/special-operators.lisp, t/eval-tests.lisp: Full multiple values
+	implementation. Works correctly but produces ugly code. This is here
+	for later use, but will be rolled back in the next patch.
+
+2012-09-12  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/macros.lisp: Added unwind-protect
+
+2012-09-03  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/deprecated-interface.lisp,
+	src/js-ir-package.lisp, src/macros.lisp, src/non-cl.lisp,
+	src/package.lisp, src/printer.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Clarified the behavior of CASE when it comes to
+	symbols and fixed some other bugs in CASE and SWITCH forms. Thanks
+	to Boris Smilga for the bug report.
+
+2012-08-29  Vladimir Sedach <vas@oneofus.la>
+
+	* t/test.lisp: Changed test-js-eval macro to handle nested arrays
+	correctly
+
+2012-08-29  Vladimir Sedach <vas@oneofus.la>
+
+	* t/test.lisp: Modified output tests macro to report mismatches in a
+	more readable format, per Daniel Gackle's suggestion.
+
+2012-08-27  Daniel Gackle <danielgackle@gmail.com>
+
+	* t/eval-tests.lisp, t/output-tests.lisp: Added some LOOP tests.
+
+2012-06-23  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp, src/package.lisp: Added BOOLEANP.
+
+2012-04-05  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp, src/macros.lisp, t/output-tests.lisp:
+	Rewrote PS LOOP to support FOR..OF clauses that compile to JS for-in
+	loops (basically the equivalent of CL's "BEING THE HASH KEYS OF").  Because JS for-in loops can't be simulated with WHILE, this required
+	changing how LOOP generates code - with these additional benefits:
+	simpler implementation; smaller generated loops; all iteration vars
+	now within the scope of the JS loop form, so that the LOOP macro now
+	has consistent scoping behavior with hard-coded FOR, WHILE, etc.
+	(notably with respect to whether to generate a new binding per
+	iteration for variables captured by a closure). There is also the
+	disadvantage that for some complex loops a temporary local variable
+	must be used to track whether the loop is on its first iteration or
+	not.
+
+2012-04-10  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Added a MAP..TO clause to PS LOOP to build a
+	collection of key-value pairs much as COLLECT builds a list.  Example: (loop :for key :in list :map key :to (length key))
+
+2012-04-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug in PS LOOP: in ":for first? = t
+	:then nil", the nil wasn't being picked up.
+
+2012-04-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: In FOR..ON clauses of PS LOOP, allow :BY to
+	be a number so that the caller can say "(LOOP :for (a b) :on c :by
+	2..." and doesn't need to invoke a non-Javascripty construct like
+	#'CDDR.
+
+2012-08-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp: Small fixes to defun-setf
+
+2012-08-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Fixed a bunch of bugs related to returning from
+	loops
+
+2012-07-16  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/compiler.lisp, src/non-cl.lisp, src/special-operators.lisp:
+	Check dynamically whether a RETURN operator has been invoked inside
+	a loop.  This fixes incorrect handling of conditional returns, such as in  (block nil    (dotimes (i 10)      (if (test i) (return i)))    (return -1))
+
+2012-08-10  Vladimir Sedach <vas@oneofus.la>
+
+	* t/eval-tests.lisp: Added unit tests for LOOP improvements
+	introduced by Boris Smilga in patches b7d9be318de33c96 and
+	331b7e580f0579554999
+
+2012-08-10  Vladimir Sedach <vas@oneofus.la>
+
+	* t/output-tests.lisp: Fixed up output-tests to correspond to
+	changes introduced in 00b39e6409845bdd7f
+
+2012-08-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Fixed tree-search to work correctly for dotted
+	lists
+
+2012-07-16  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/lib/ps-loop.lisp: Improved RETURN and NAMED in LOOP.
+
+2012-08-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, src/utils.lisp, t/output-tests.lisp:
+	Suppressed printing of JS labels for CL BLOCK expressions when there
+	is no explicit returning from those blocks
+
+2012-07-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/non-cl.lisp: Stylistic changes to CREATE
+	and RESERVED-SYMBOL
+
+2012-07-27  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors, src/non-cl.lisp, t/output-tests.lisp: Fixed bug with
+	quoted symbol arguments to CREATE (thanks to Russell Sim for the bug
+	report and patch)
+
+2012-07-27  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Updated documentation to reflect current
+	state of LET. Thanks to Yakov Zaytsev for spotting the error.
+
+2012-07-27  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors: Added Boris Smilga to list of contributors
+
+2012-07-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed
+	inconsistency in way quoted arrays are treated (thanks to Daniel
+	Gackle for the bug report).
+
+2012-07-16  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/lib/ps-loop.lisp: Implicit initialization of local vars (WITH
+	sans =).
+
+2012-07-16  Boris Smilga <boris.smilga@gmail.com>
+
+	* src/lib/ps-loop.lisp: Improved LOOP conditional clauses (IF, ELSE,
+	AND, END).
+
+2012-05-09  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors: Added 3b to contributors file
+
+2012-05-09  Vladimir Sedach <vas@oneofus.la>
+
+	* t/output-tests.lisp: Added unit tests for 3b's
+	b5d18b1670cda55178b72b7 patch
+
+2012-04-10  Bart Botta <00003b@gmail.com>
+
+	* src/special-operators.lisp: don't expand arguments to QUOTE in
+	TRY-EXPRESSIONIZING-IF? fixes infinite recursion in something like   (define-symbol-macro foo (ps:@ a foo))   (lambda () (when (> foo 1) 2))
+
+2012-05-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-ir-package.lisp, t/output-tests.lisp: ps-js intermediate
+	representation package no longer uses Common Lisp symbols.
+
+2012-05-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp, t/eval-tests.lisp, t/output-tests.lisp: Fixed
+	loop return for most cases
+
+2012-05-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/printer.lisp: Removed line breaking code
+	introduced in 60154a465a5a29b4b5136f. Now only object literals with
+	more than 2 members are line broken.
+
+2012-03-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/test-package.lisp, t/test.lisp: Made unit tests all part of the
+	same test suite (thanks to Anton Vodonosov for the suggestion).
+
+2012-02-13  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Updated reference manual modified date.
+
+2012-02-13  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Added description of NEW operator to
+	reference manual.
+
+2012-02-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/eval-tests.lisp: Fixed bug where
+	forms of type (incf x (incf x)) were giving wrong results because of
+	differences in how CL and JS increment operators worked.
+
+2012-02-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/printer.lisp, t/output-tests.lisp: Added
+	line breaking to pretty-printer
+
+2012-02-04  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/eval-tests.lisp, t/output-tests.lisp: Fixed
+	bug w/+ string concatenation non-associativity. Thanks to Daniel
+	Gackle for the bug report.
+
+2012-02-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Added multiple return values for dynamic
+	returns.
+
+2012-02-01  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Added documentation for EVAL-WHEN to the
+	reference documentation.
+
+2012-01-12  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Updated last modified date in manual
+
+2012-01-12  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Added documentation for the [] macro.
+
+2012-01-07  Vladimir Sedach <vas@oneofus.la>
+
+	* COPYING: Updated dates in copying file
+
+2012-01-07  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors: Added Scott Bell to contributors file
+
+2012-01-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp: Made hex escaping of char codes in strings
+	always print alphabetic hex digits in upper case (fixes test
+	failures on Allegro).
+
+2011-12-26  Scott Bell <scott@skysheet.com>
+
+	* src/lib/ps-loop.lisp, src/macros.lisp, src/package.lisp: Define
+	BIND macro for destructuring and property binding.  Destructuring lists in the LOOP macro now use BIND rather than
+	DESTRUCTURING-BIND.
+
+2011-12-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-operators.lisp, t/output-tests.lisp:
+	Fixed up bug where defuns were getting wrapped in lambdas because
+	toplevel form checking weren't getting macroexpanded.
+
+2011-12-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed bug where
+	expressionize-if macroexpansion attempts would throw errors.
+
+2011-12-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Fixed bug where top-level defuns and defvars
+	inside toplevel lets were being wrapped in lambdas and not defined
+	at the toplevel.
+
+2011-12-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp, src/non-cl.lisp,
+	src/special-operators.lisp, t/eval-tests.lisp, t/output-tests.lisp:
+	Made returns from CL loops (implicit nil blocks) work.
+
+2011-12-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp, src/special-operators.lisp: Made output of
+	variable declarations prettier in some cases.
+
+2011-12-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/lib/ps-loop.lisp, src/non-cl.lisp,
+	src/printer.lisp, src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Fixed the behavior of return in case clauses
+
+2011-12-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Fixed compilation of return from blocks,
+	(return (if ...))
+
+2011-12-17  Vladimir Sedach <vas@oneofus.la>
+
+	* t/output-tests.lisp: Fixed up unit tests for changes in
+	205715d298cdb6920
+
+2011-12-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/function-definition.lisp, src/special-operators.lisp,
+	t/output-tests.lisp: Labels/flet now lambda wrapped as well.
+
+2011-12-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/compiler.lisp,
+	src/function-definition.lisp, src/macros.lisp,
+	src/special-operators.lisp, t/eval-tests.lisp, t/output-tests.lisp,
+	t/test-package.lisp: Wrap let in lambda when there is no outer
+	lexical scope to introduce one, and avoid spurious global variables.
+
+2011-12-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/function-definition.lisp, t/eval-tests.lisp: Made sure returns
+	from LABELS functions work properly.  Thanks to Daniel Gackle for
+	the bug report.
+
+2011-12-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp, src/non-cl.lisp,
+	src/special-operators.lisp, t/eval-tests.lisp, t/output-tests.lisp,
+	t/test.lisp: Fix for closures using the same variable name.  Got rid
+	of duplicate calls to the printer when compiling.  Thanks to Canhua
+	and Scott Bell for the bug reports.
+
+2011-12-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp: Refactored let code
+
+2011-12-14  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/non-cl.lisp: Use the standard JS idiom for detecting
+	undefinedness. Its advantage is that it doesn't crash if you give it
+	an undefined symbol.
+
+2011-12-12  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/printer.lisp: Added an ignore for an unused variable.
+
+2011-12-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp,
+	src/lib/ps-loop.lisp, src/non-cl.lisp, src/special-operators.lisp,
+	t/eval-tests.lisp, t/output-tests.lisp, t/test-package.lisp,
+	t/test.lisp: Made return-from and statement expressionization work
+	better.
+
+2011-12-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Restored fcb936231d by Daniel Gackle for now.
+
+2011-12-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/output-tests.lisp: Made toplevel lambda forms
+	print with parentheses around them so JS parsers work (thanks to
+	Scott Bell for the bug report).
+
+2011-12-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/output-tests.lisp,
+	t/package-system-tests.lisp: Made structures printed at toplevel be
+	wrapped in parentheses to prevent parsing bugs in JS implementations
+	(thanks to Scott Bell for the bug report).
+
+2011-12-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/eval-tests.lisp,
+	t/output-tests.lisp: Fixed "return break" bug in fall-through case
+	statements (thanks to Scott Bell for the bug report).
+
+2011-12-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/eval-tests.lisp, t/output-tests.lisp: Fixed
+	problem with operator associativity and parenthesizing (thanks to
+	Canhua for the bug report).
+
+2011-12-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/eval-tests.lisp: Undid fcb936231da
+	by Daniel Gackle for now; will fix later after smaller bugs.
+
+2011-09-15  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-operators.lisp: Fixed bug: return-from value was not
+	being returned.  This fix is still wrong, because a warning is generated, but it's
+	less wrong than the preceding behavior.
+
+2011-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/printer.lisp: [Scott Bell] Eliminate
+	STYLE-WARNINGs during compilation
+
+2011-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp,
+	src/special-operators.lisp, t/eval-tests.lisp, t/output-tests.lisp:
+	Fixed bug with function arguments not being respected for renaming
+	by LET. Thanks to Scott Bell for the bug report.
+
+2011-09-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed division
+	bug introduced in abf27a29f. Thanks to Scott Bell and Daniel Gackle
+	for the bug report.
+
+2011-08-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp, t/output-tests.lisp: Fixed who-ps-html bug.
+	Thanks to Canhua for the report.
+
+2011-08-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp: Fixed problem with CL-side definition of VAR
+	having an optional instead of required value. Thanks to Erik
+	Huelsmann for the bug report.
+
+2011-08-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/output-tests.lisp: Fixed bug w/division
+	non-associativity (thanks to Anthony Fairchild for the bug report).
+
+2011-07-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed behavior
+	for one-arg / operator (thanks to Leslie Polzer for the bug report).
+
+2011-05-31  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/js-expander.el: Synced js-expander.el with latest SLIME
+	(thanks to Andy Peterson for the fix).
+
+2011-05-04  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp: Fixed up bogus returns in
+	ps-runtime-lib.
+
+2011-03-12  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.test.asd, t/eval-tests.lisp, t/output-tests.lisp,
+	t/package-system-tests.lisp, t/test-package.lisp, t/test.lisp: Added
+	CL-JavaScript test stubs.
+
+2010-06-24  Red Daly <reddaly@gmail.com>
+
+	* src/compiler.lisp, src/macros.lisp, src/swank-parenscript.lisp:
+	SLIME plugin
+
+2011-02-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed issue
+	w/failing unit test because of differences in order of list elements
+	after remove-duplicates in different implementations.
+
+2011-02-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/function-definition.lisp,
+	t/output-tests.lisp: Fixed error with symbol-macrolet overriding
+	lexical bindings introduced by functions. Thanks to Scott Bell for
+	the bug report.
+
+2011-02-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp: Fixed output in CLisp: specified integer
+	printing as decimal (in CLisp, with-standard-io-syntax set
+	*print-readably* to t, which caused number like 123 to print like
+	123. with a trailing dot). This does not print a trailing dot.
+
+2011-02-22  Vladimir Sedach <vas@oneofus.la>
+
+	* t/package-system-tests.lisp: Fixed test execution order dependency
+	bug in package system tests.
+
+2011-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed case of
+	cond fallthrough (thanks to Daniel Gackle for the bug report)
+
+2011-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd: Fixed file loading order so ps-js-symbols get
+	re-exported before other files use them.
+
+2011-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/js-dom-symbol-exports.lisp: Added
+	case-sensitive exports to DOM symbol packages, described them and
+	case-sensitivity in the reference manual.
+
+2011-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp, t/output-tests.lisp: Fixed error w/all upper-case
+	inverted symbols not being printed in uppercase.
+
+2011-01-31  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.test.asd, t/test-package.lisp: Replaced FiveAM with
+	EOS (EOS is a drop-in replacement with better code and no
+	dependencies on Arnesi, which breaks in recent Lispworks and
+	probably other implementations).
+
+2011-01-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/output-tests.lisp: Fixed equality operators
+	not being parenthesized.
+
+2011-01-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/output-tests.lisp: Fixed error with |,|
+	operator precedence and CREATE.
+
+2011-01-30  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Documented use/in-package, explained
+	obfuscation.
+
+2011-01-30  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/compiler.lisp, src/package.lisp: API for
+	PS version and defined operators info.
+
+2011-01-30  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compiler.lisp, src/function-definition.lisp,
+	src/printer.lisp, src/special-operators.lisp, t/output-tests.lisp:
+	Made lambda/flet/labels/defun share code for compiling their bodies,
+	which should eliminate a lot of bugs.
+
+2011-01-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/deprecated-interface.lisp: Changed special
+	operator redefinition and deprecated warnings to issue a real 'style
+	warning' which should hopefully not mess w/compilation in compilers
+	like SBCL.
+
+2011-01-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp: Fixed broken multiple-value-bind. Thanks to
+	Daniel Gackle for the bug report.
+
+2011-01-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/printer.lisp, src/special-operators.lisp,
+	t/output-tests.lisp: Fixed bug w/flet and labels not parsing
+	extended lambda lists. Thanks to Daniel Gackle for the bug report.
+
+2011-01-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed bug in
+	return of conditional inside a case.
+
+2011-01-17  Vladimir Sedach <vas@oneofus.la>
+
+	* t/output-tests.lisp: Fixed unit tests for change to keyword
+	handling.
+
+2011-01-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-operators.lisp: Fixed bug: only assign INIT-FORM to
+	keyword arg if it is undefined. (It is incorrect to assign it when
+	the arg was supplied with null, 0, or false.)
+
+2011-01-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp: Use a gensym for error variable in IGNORE-ERRORS.
+
+2011-01-07  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/utils.lisp: Added caret to the characters PS translates in
+	symbols.
+
+2010-12-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Changed heuristic
+	for deciding to compile a conditional to a statement or expression
+	to examine the hypothetical output instead of measuring s-exp depth.
+
+2010-12-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed &key
+	default argument handling not to evaluate default value all the
+	time. Thanks to Daniel Gackle for the bug report.
+
+2010-12-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/output-tests.lisp: Fixed throw
+	compiling into an expression (thanks to Daniel Gackle for the bug
+	report).
+
+2010-12-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-operators.lisp,
+	t/output-tests.lisp: Made top-level blocks in function bodies work
+	correctly wrt return-from.
+
+2010-12-07  Vladimir Sedach <vas@oneofus.la>
+
+	* : commit 86dcc1fe227b13ce6dae10bb10b29495cd2aad05 Author: Vladimir
+	Sedach <vas@oneofus.la> Date:   Tue Dec 7 01:51:27 2010 -0500
+
+2010-12-06  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed call to PS-GENSYM that was triggering
+	an assertion failure.
+
+2010-12-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-loop.lisp, src/macros.lisp, src/package.lisp,
+	src/printer.lisp, src/special-operators.lisp, t/output-tests.lisp:
+	Added Scott Bell's implementation of ASH.
+
+2010-11-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/non-cl.lisp: No longer defining ps:f as a special variable in
+	Lisp.
+
+2010-11-22  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/js-dom-symbol-exports.lisp,
+	src/js-ir-package.lisp, src/lib/ps-html.lisp, src/macros.lisp,
+	src/namespace.lisp, src/package.lisp, src/special-operators.lisp,
+	src/utils.lisp, t/output-tests.lisp, t/package-system-tests.lisp:
+	Added support for case-sensitive symbols via readtable-case :invert
+	(thanks to Matthias Benkard for the idea)
+
+2010-11-21  Vladimir Sedach <vas@oneofus.la>
+
+	* COPYING, parenscript.test.asd, t/{ps-tests.lisp =>
+	output-tests.lisp}, t/package-system-tests.lisp,
+	t/reference-tests.lisp, t/test-package.lisp, t/test.lisp: Put output
+	tests code into its own package, put that under GNU all-permissive
+	license.
+
+2010-11-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/deprecated-interface.lisp,
+	src/js-ir-package.lisp, src/non-cl.lisp, src/printer.lisp,
+	src/special-operators.lisp: Renamed package JS to PS-JS to avoid
+	possible future conflicts (I know CL-JavaScript at one point wanted
+	to use JS)
+
+2010-11-21  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/macros.lisp, src/non-cl.lisp,
+	src/special-operators.lisp: Moved PS-specific exported macros and
+	special forms to their own file (easier to keep track of them to
+	provide CL equivalent implementations, and for future deprecation)
+
+2010-11-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/deprecated-interface.lisp,
+	src/package.lisp: Added warnings when redefining Parenscript
+	operators or macros, provided a list of operators and macros defined
+	by Parenscript. Thanks to John Fremlin for the request.
+
+2010-11-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-operators.lisp, t/ps-tests.lisp:
+	Fixed bug with BLOCK erroneously interpreting lexical returns as
+	dynamic, added more RETURN tests.
+
+2010-11-13  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compiler.lisp, src/js-ir-package.lisp,
+	src/package.lisp, src/special-operators.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Added lexical and dynamic extent RETURN-FROM
+	support.
+
+2010-11-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/deprecated-interface.lisp,
+	src/package.lisp, src/special-operators.lisp, t/ps-tests.lisp:
+	Implemented implicit blocks for defun/flet/labels and for loops.
+
+2010-11-10  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/deprecated-interface.lisp,
+	src/package.lisp, src/special-operators.lisp,
+	t/reference-tests.lisp: Deprecated WITH special operator.
+
+2010-11-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/ps-tests.lisp: Fixed bug with
+	compiling dotted lists (thanks to Scott Bell for the bug report)
+
+2010-11-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/macros.lisp, src/special-operators.lisp,
+	t/ps-tests.lisp: Made closures capture loop variables properly (that
+	is, closures over variables introduced in loops should close over a
+	new binding of those variables for each loop iteration), with a
+	'with' scoping trick borrowed from Scheme2JS.
+
+2010-11-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Wrapped the printer in a
+	with-standard-io-syntax to hopefully prevent surprises (I hope this
+	doesn't cause any).
+
+2010-11-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/ps-tests.lisp: Made &optional
+	parameter not generate null assignment code when default value is
+	null.
+
+2010-11-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/macros.lisp,
+	src/package.lisp, t/package-system-tests.lisp, t/ps-tests.lisp:
+	Implemented IN-PACKAGE and USE-PACKAGE. Thanks to Red Daly and
+	Alessio Stalla for providing pieces of the implementation.
+
+2010-11-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-operators.lisp, t/ps-tests.lisp: Fixed bug in
+	RETURN-FROM (thanks to Scott Bell for the bug report).
+
+2010-11-04  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/js-dom-symbol-exports.lisp: Removed
+	trailing whitespace in reference manual.
+
+2010-11-04  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/compiler.lisp, src/macros.lisp, src/{special-forms.lisp =>
+	special-operators.lisp}, t/package-system-tests.lisp,
+	t/ps-tests.lisp, t/reference-tests.lisp: Reimplemented special
+	operator handling to better handle the expression/statement
+	dichotomy.
+
+2010-10-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/lib/ps-html.lisp,
+	src/macros.lisp, src/package.lisp: Changed str back to stringify
+	(conflict w/CL-WHO)
+
+2010-08-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/lib/ps-html.lisp,
+	src/macros.lisp, src/package.lisp: Rename stringify to str (clojure
+	influence).
+
+2010-08-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, src/special-forms.lisp, t/ps-tests.lisp: Added
+	docstring output for var and defun when *js-print-pretty* is t.
+
+2010-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Removed JS 1.6 specific
+	keyword arg handling since it was broken, and fixing it would make
+	it uglier than using the regular keyword handling.
+
+2010-08-22  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/lib/ps-html.lisp,
+	src/macros.lisp, src/package.lisp: Renamed concat-string to
+	stringify
+
+2010-08-22  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd: Removed test-op method from parenscript.asd
+
+2010-08-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Push :parenscript onto features instead of
+	provide to undo change in fe16b36557f (read the CLHS a bit and
+	realized the latter is not a good idea).
+
+2010-08-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Cleaned up generated code
+	for processing &key and &optional parameters.
+
+2010-08-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed duplicate hoisted
+	lexical variable declaration (thanks to Daniel Gackle for bug
+	report).
+
+2010-08-13  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp, src/compilation-interface.lisp,
+	src/compiler.lisp, src/deprecated-interface.lisp,
+	src/js-dom-symbol-exports.lisp, src/lib/ps-dom.lisp,
+	src/lib/ps-html.lisp, src/lib/ps-loop.lisp, src/macros.lisp,
+	src/namespace.lisp, src/package.lisp, src/parse-lambda-list.lisp,
+	src/printer.lisp, src/special-forms.lisp, src/utils.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp, t/test.lisp: Changed package designators to
+	uninterned symbols (should protect against reader changes and enable
+	safe usage with case-sensitive lisps)
+
+2010-08-13  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, parenscript.test.asd, src/package.lisp: Changed
+	ASD system definitions to conform to some of Juanjo Garcia Ripoll's
+	recommendations (see
+
+	http://tream.dreamhosters.com/tream/musings/49-lisp/76-analysis-of-existing-asdf-files)
+
+2010-08-13  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/deprecated-interface.lisp,
+	src/macros.lisp, src/package.lisp, t/ps-tests.lisp: Deprecated
+	DO-SET-TIMEOUT.
+
+2010-08-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-forms.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Fixed compilation of LET forms without
+	bodies (thanks to Maciej Katafiasz <mathrick@gmail.com> for the bug
+	report).  Simplified implicit-return code, generalized expressionizing of
+	statements (should be possible to use this for things like loops
+	inside expressions etc. without too much work now).
+
+2010-07-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/package-system-tests.lisp: Changed package system tests to use
+	deterministic obfuscator to make unit tests work independent of
+	which order they are executed.
+
+2010-07-11  Vladimir Sedach <vas@oneofus.la>
+
+	* t/reference-tests.lisp: Removed state dependencies between
+	different unit tests (this was causing test failures in different CL
+	implementations).
+
+2010-07-11  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp, t/reference-tests.lisp: Updated unit tests for
+	new HTML string concatenation scheme.
+
+2010-06-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed compilation of COND
+	clauses with unspecified consequents, empty PROGN expressions.  Thanks to Daniel Gackle for the bug report.
+
+2010-06-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, t/ps-tests.lisp: Fixed PS-INLINE
+	(thanks to Olof-Joachim Frahm <Olof.Frahm@web.de> for the patch).
+
+2010-06-20  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-html.lisp: Extended the amount of compile-time string
+	concatentation PS can do when emitting HTML.
+
+2010-06-20  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp: Made CONCAT-STRING use the buffer join technique
+	rather than the + operator which is notoriously slow for string
+	concatenation in some browsers.
+
+2010-06-17  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-dom.lisp: Added HCENTER and VCENTER keys to the OFFSET
+	macro.
+
+2010-06-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Fixed bug with +/- precedence
+	(thanks to Daniel Gackle for the bug report).
+
+2010-05-23  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug in PS-LOOP: variable names like
+	COUNT were being converted to LOOP keywords inappropriately, causing
+	them to be compiled incorrectly.
+
+2010-05-23  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp: Fixed bug in DESTRUCTURING-BIND: the default when
+	binding to the tail of a list should be [], not null.
+
+2010-05-23  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/macros.lisp: Replaced deprecated % with REM in ODDP.
+
+2010-05-14  Chew Theam Yong <chew.theam.yong@gmail.com>
+
+	* src/printer.lisp, t/ps-tests.lisp: Operator precedence - fixed
+	parenthesizing for comma in arrays.
+
+2010-05-14  Chew Theam Yong <chew.theam.yong@gmail.com>
+
+	* src/printer.lisp, t/ps-tests.lisp: Operator precedence - fixed
+	handling of nested lets.
+
+2010-05-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp: Undid last patch (didn't really think through how
+	it would work with arrays).
+
+2010-05-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp: Changed random not to floor all numbers (thanks
+	to Chew Theam Yong <senatorzergling@gmail.com>) for the suggestion).
+
+2010-05-11  Chew Theam Yong <senatorzergling@gmail.com>
+
+	* src/lib/ps-loop.lisp: Changed gensym to ps-gensym for
+	consistency/replicable gensyms.
+
+2010-05-11  Chew Theam Yong <senatorzergling@gmail.com>
+
+	* runtime/ps-runtime-lib.lisp: Renamed function argument 'as' to
+	'arrs' for consistency, just like in nconc. (PS ok, it's really
+	because 'as' is an Actionscript 3 keyword).
+
+2010-05-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Fixed problem with calling
+	methods on anonymous functions (thanks to Daniel Gackle for the bug
+	report).
+
+2010-05-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp: Use funcall instead of Scheme-like function
+	calling convention in macros.lisp
+
+2010-05-19  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Slight fix to reference doc.
+
+2010-05-03  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Fixed typo in docs/reference.html
+
+2010-04-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, src/special-forms.lisp: Made syntax of js:switch
+	less ugly.
+
+2010-04-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/printer.lisp: Simplified handling of
+	character literals.
+
+2010-04-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Stopped defpsmacro/define-ps-symbol-macro from
+	clobbering special forms.
+
+2010-04-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Removed %check-once-only type check.
+
+2010-04-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Fixed operator associativity
+	printing bug (thanks to Daniel Gackle for the bug report).
+
+2010-04-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/package.lisp: Added != and !==
+	to deprecated interface.
+
+2010-04-22  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/printer.lisp: Fixed &=, |=, and ^=.
+
+2010-04-21  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/lib/ps-macro-lib.lisp, src/macros.lisp: Moved
+	ps-macro-lisp into macros.lisp
+
+2010-04-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/package.lisp, t/ps-tests.lisp: Removed EQUALP
+	(it really needs to be a runtime function).
+
+2010-04-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/macros.lisp,
+	src/special-forms.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Changed EQUAL and EQUALP to compile to '==', added STRING=.
+
+2010-04-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/package.lisp,
+	src/printer.lisp, src/special-forms.lisp, t/ps-tests.lisp: Fixed
+	%/REM. Thanks to Daniel Gackle for the bug report.
+
+2010-04-20  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Fixed unit tests for NULL patch.
+
+2010-04-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/special-forms.lisp: Made NULL treat
+	'undefined' properly.
+
+2010-04-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, t/ps-tests.lisp: Fixed vector literal printing.
+
+2010-04-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Fixed *= (thanks to Daniel
+	Gackle for the bug report).
+
+2010-04-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/macros.lisp, src/special-forms.lisp, t/ps-tests.lisp: Fixed
+	bug where FUNCALL wasn't properly accessing lexical variables
+	(thanks to Daniel Gackle for the bug report).
+
+2010-04-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/special-forms.lisp, t/ps-tests.lisp: Made
+	LABEL work w/ new compiler.
+
+2010-04-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp: Fixed FOR special form to work w/ compiler
+	rewrite.
+
+2010-04-18  Vladimir Sedach <vas@oneofus.la>
+
+	* : commit 4e602569fa56b07f0d622e8b3d5c10049cd59a68 Author: Vladimir
+	Sedach <vas@oneofus.la> Date:   Sat Apr 17 20:33:13 2010 -0400
+
+2010-04-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Refactored symbol name mangling code.
+
+2010-04-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp: Fixed equality abuse in ps-macro-lib.
+
+2010-04-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/namespace.lisp: Refactored symbol-to-js-string function.
+
+2010-04-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp: Put == and === into deprecated
+	interface.
+
+2010-04-17  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Removed VOID from reference.
+
+2010-04-08  Scott Bell <scott@skysheet.com>
+
+	* src/deprecated-interface.lisp, src/package.lisp,
+	src/printer.lisp, src/special-forms.lisp: Define new special form
+	LABEL to provide general JavaScript labels.  LABELED-FOR is now deprecated in favour of LABEL and FOR.
+
+2010-02-24  Scott Bell <scott@skysheet.com>
+
+	* .gitignore: Add common fasl suffixes to new file .gitignore This is because git (> 1.7.0) reports submodules as modified if
+	their working trees are considered `dirty', which happens when fasls
+	are generated.
+
+2010-03-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, t/ps-tests.lisp: Fixed '=' comparison of more
+	than two expressions.
+
+2010-03-06  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp: Added NCONC to the runtime lib
+	(thanks to Daniel Gackle for the implementation).
+
+2010-02-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/special-forms.lisp,
+	t/ps-tests.lisp: Fixed PS-COMPILE-STREAM breakage (was trying to
+	compile forms one at a time as they were read, which would make
+	sense for an interpreter, but the desired behavior is to read all
+	the forms in first and then compile them at once - that caused some
+	problems with printing).  Thanks to Yong <senatorzergling@gmail.com> for the bug report.
+
+2010-02-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html, src/namespace.lisp: Changed OBFUSCATE-PACKAGE
+	to take closures for symbol-maps only.
+
+2010-02-13  Vladimir Sedach <vas@oneofus.la>
+
+	* : commit 2e8fac0170bf3632fe31588472ca1a55bf6b220f Author: Vladimir
+	Sedach <vas@oneofus.la> Date:   Sat Feb 13 02:44:22 2010 -0500
+
+2010-02-13  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.html: Removed defmacro/ps from reference doc.
+
+2010-01-21  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug in PS LOOP: iteration variables
+	weren't being declared when their initial value happened to be null.
+
+2010-02-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Supressed top-level "null"s being output.
+
+2010-01-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Added code to handle
+	SPECIAL declarations.
+
+2010-01-04  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Made WHEN/UNLESS return
+	null in situations where a return statement was expected (switch,
+	try statements).
+
+2010-01-04  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-forms.lisp, t/ps-tests.lisp: Made
+	FLET and LABELS not gensym new names when it's not necessary.
+
+2010-01-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/compilation-interface.lisp, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/package.lisp: Deprecated
+	DEFMACRO/PS as described on parenscript-devel email list,
+	2009.12.28.
+
+2010-01-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/compiler.lisp, src/js-dom-symbol-exports.lisp,
+	src/package.lisp, src/parse-lambda-list.lisp,
+	src/special-forms.lisp: Deleted trailing whitespace.
+
+2010-01-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Changed RETURN of
+	conditionals not to return spurious nulls.
+
+2009-12-29  Vladimir Sedach <vas@oneofus.la>
+
+	* src/namespace.lisp, t/package-system-tests.lisp,
+	t/test-package.lisp: Made the obfuscator not obfuscate exported
+	symbols.
+
+2009-12-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug: loop accumulation was broken
+	after the removal of WITH-LAMBDA macro in c08b0525.
+
+2009-12-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Made DEFUN SETF work correctly for &rest parameters in argument
+	signatures. However, this means that the store-form now gets
+	evaluated before the arguments to the updating function.
+
+2009-12-27  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/internal/notes-and-links.txt: Removed "internal"
+	documentation.
+
+2009-12-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Removed unneeded EVAL-WHEN from around macro
+	environment definitions.
+
+2009-12-27  Vladimir Sedach <vas@oneofus.la>
+
+	* t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp, t/test-package.lisp, t/test.lisp: Removed
+	EVAL-WHEN crud from test suite definitions.
+
+2009-12-27  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd: Cleaned up ASD file a bit.
+
+2009-12-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Removed EVAL-WHEN and #. stuff from
+	packages.lisp
+
+2009-12-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Made RETURN of TRY handle
+	the :CATCH clause correctly.
+
+2009-12-25  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/build.sh, docs/pbook.py, docs/reference.html,
+	docs/reference.lisp, parenscript.asd, t/ps-tests.lisp,
+	t/ref2test.lisp, t/reference-tests.lisp, t/test-package.lisp,
+	t/test.lisp: Rewrote reference manual in HTML.
+
+2009-12-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-loop.lisp, src/lib/ps-macro-lib.lisp, src/package.lisp:
+	Removed WITH-LAMBDA macro.
+
+2009-12-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/printer.lisp, src/special-forms.lisp:
+	Removed IE specific CC-IF form.
+
+2009-12-12  Vladimir Sedach <vas@oneofus.la>
+
+	* COPYING, extras/js-expander.el: Improved doc for js-expander.el,
+	added more recent dates to COPYING copyright notice.
+
+2009-12-07, 20  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp, src/package.lisp: Removed MAP-UNTIL
+	from runtime lib.
+
+2009-12-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Rearraged
+	ps-macro-lib.lisp to make more sense, removed MEMOIZE function.
+
+2009-12-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/utils.lisp: Added < and > to the list of symbols PS accepts in
+	identifiers and mangles into legal JS.
+
+2009-12-03  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/printer.lisp: Omit superfluous space after DEFAULT.
+
+2009-11-08  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bug in PS LOOP: bindings should be
+	destructured *after* testing whether or not the loop is over. This
+	bug was obscured by the fact that it was only activated in the
+	comparatively rare FOR-ON clause, because FOR-IN puts bindings in a
+	second iteration object than the end-test.
+
+2009-11-04  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp: Added PS implementations of PROG1 and
+	PROG2.
+
+2009-12-02  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/lib/ps-macro-lib.lisp,
+	src/package.lisp, src/printer.lisp, src/special-forms.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Renamed GET-PROPERTY to GETPROP.
+
+2009-12-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed return of iteration
+	special forms.
+
+2009-11-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: SETF now correctly looks
+	up SETF expansions of places before attempting macroexpansion.
+
+2009-11-29  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Made SWITCH flatten
+	blocks in case statements. This prevents redundant brackets from
+	being printed.
+
+2009-11-29  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Removed redundant PROGN
+	in DO* statement.
+
+2009-11-29  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp: Changed PS-DOC* to take multiple
+	arguments (implicit progn) to make it consistent with PS*.
+
+2009-11-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed RETURN of COND.
+
+2009-11-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed RETURN of
+	SYMBOL-MACROLET.
+
+2009-11-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Added VALUES and
+	MULTIPLE-VALUE-BIND. Thanks to Red Daly and Daniel Gackle for the
+	code.
+
+2009-11-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Exported *PARENSCRIPT-STREAM* special variable,
+	used to control output of PS*.
+
+2009-11-22  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Better RETURN handling of
+	conditionals and statements.
+
+2009-11-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-loop.lisp: Make NIL the value (the last form in
+	enclosing PROGN) of a LOOP macro with no default accumulator. (Patch
+	from Scott Bell)
+
+2009-11-05  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/lib/ps-macro-lib.lisp,
+	src/package.lisp, src/printer.lisp, src/special-forms.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Renamed SLOT-VALUE to GET-PROPERTY (and
+	added the former to the deprecated interface).
+
+2009-11-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp, t/ps-tests.lisp: Fixed symbol-to-js-string of
+	things like A++ and A**.  Thanks to Daniel Gackle for the bug report.
+
+2009-11-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed RETURN of CASE.
+
+2009-11-05  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/special-forms.lisp,
+	t/reference-tests.lisp: DOLIST no longer generates a gensym for the
+	array argument if it's not needed.
+
+2009-11-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed FLET expression
+	compilation.
+
+2009-11-04  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/special-forms.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Added implicit return to function bodies.
+
+2009-10-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: The RETURN special operator now throws an
+	error if it encounters the syntax error of (RETURN (RETURN FOO)).
+
+2009-10-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: Extended the optimizations in the NOT
+	special form to convert double-negatives into positives, as in (PS
+	(NOT (NOT X))) => "x".
+
+2009-10-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Made :WHILE and :UNTIL into first-class
+	clauses in PS LOOP (they weren't working properly in conjunction
+	with :FOR clauses).
+
+2009-10-27  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Added support for :APPEND clauses to PS
+	LOOP.
+
+2009-10-27  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Added support for :WITH clauses to PS LOOP.
+
+2009-10-27  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed bugs involving :INITIALLY and :FINALLY
+	in PS LOOP. They weren't working properly in cases where the main
+	body of the loop doesn't execute. When that happens, iteration
+	variables should still be in scope, just null. (An exception is for
+	iteration variables in :FROM clauses, which get set to their
+	init-form at declaration time. This behavior is drawn from CL's
+	LOOP, or at least CCL's implementation thereof.)
+
+2009-10-27  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Removed three nonstandard clauses in PS LOOP
+	(:INDEX, :FIRST-TIME, and :LAST-TIME) which date back to the
+	experimental origins of this code and which, as far as I know, are
+	unused.
+
+2009-10-26  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/compiler.lisp, src/special-forms.lisp: Literal vector notation
+	is now supported; treated exactly like literal lists.
+
+2009-10-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, src/special-forms.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp: Changed the CREATE
+	special form to treat its key arguments as constants.
+
+2009-09-21  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp, src/lib/ps-macro-lib.lisp: Fixed bug: dotted
+	lists weren't being destructured properly.
+
+2009-09-21  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed a bug in PS LOOP: the :INITIALLY and
+	:FINALLY clauses should execute whether or not the loop body is
+	executed.
+
+2009-09-17  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp: Added &OPTIONAL to DESTRUCTURING-BIND.
+	Currently it's just ignored (next step woudl be to support default
+	values).
+
+2009-09-15  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp: DESTRUCTURING-BIND now supports &REST.
+
+2009-09-17  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, t/ps-tests.lisp: Fixed symbol macro bug (thanks
+	to Daniel Gackle for the bug report).
+
+2009-09-14  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp, t/ref2test.lisp: Replaced redundant string
+	functions in utils.lisp with standard/library ones.
+
+2009-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, t/ps-tests.lisp: Fixed the CHAIN macro
+	to correctly chain plain slot values.  Thanks to Daniel White <daniel@whitehouse.id.au> for the patch.
+
+2009-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Changed op-precedence back to a memoized table
+	(performance tweaks).
+
+2009-09-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Memoized SYMBOL-NAME-TO-JS-STRING (performance
+	improvement).
+
+2009-09-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Added symbolp check before the use of
+	lookup-macro-def in ps-macroexpand (more low-hanging performance
+	fruit).
+
+2009-09-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Refactored SYMBOL-NAME-TO-JS-STRING.
+
+2009-09-11  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compilation-interface.lisp,
+	src/package.lisp, src/printer.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Changed printing subsystem interface to
+	allow direct output to streams. Added 'ps-to-stream' function.
+
+2009-09-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/compiler.lisp,
+	src/package.lisp, src/printer.lisp, src/special-forms.lisp:
+	Refactored compile-parenscript-form code.
+
+2009-09-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-forms.lisp: Refactored ps-compiler
+	method name for symbols.
+
+2009-08-19  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Factored out duplication between simple and
+	parallel loops.
+
+2009-08-18  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp, src/lib/ps-macro-lib.lisp: Correcting how
+	parallel loop handles destructuring lists.
+
+2009-08-18  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Separated the processing of single and
+	parallel loops.
+
+2009-08-18  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Fixed problem with destructuring-lists in
+	multiple-for clauses (they need binding before the first execution
+	of the loop). This solution is not optimal, because it creates new
+	bindings for the variable inside the loop, and emits the pre-loop
+	bindings even when they aren't being used.
+
+2009-08-15  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: Removed trailing whitespace.
+
+2009-08-15  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: Eliminated unused local variables that
+	caused compiler warnings in CCL.
+
+2009-08-14  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Made PS LOOP conform to LOOP's semantics
+	regarding parallel FOR clauses. A clause's end-test should take
+	place before the next clause's step form.
+
+2009-08-13  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Broke up loop parsing by pushing local
+	functions to top level and passing a state object around.
+
+2009-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp, src/printer.lisp,
+	src/special-forms.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Fixed a bug where 'create' was special-casing keywords in
+	inappropriate ways.  (slot-value (create :foo-bar 1) :foo-bar) was being translated as ({
+	fooBar : 1 })['foo-bar']
+
+2009-08-06  Vladimir Sedach <vas@oneofus.la>
+
+	* : commit a14fb2cb9bce1d6956cc9be3a7e7b67451b7032f Author: Vladimir
+	Sedach <vas@oneofus.la> Date:   Thu Aug 6 22:21:11 2009 -0600
+
+2009-08-05  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Made the COUNT clause in PS LOOP evaluate
+	 its term before counting (and skip nil) like CL does.
+
+2009-07-31  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Added :REPEAT clauses to PS's LOOP.
+
+2009-08-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Exported 'chain' helper macro.
+
+2009-07-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/printer.lisp, t/ps-tests.lisp:
+	Changed 'slot-value' to print keyword slot names as strings.
+
+2009-07-26  Red Daly <reddaly@gmail.com>
+
+	* src/compiler.lisp, t/ps-tests.lisp: Fixed eval-when special form
+	and added tests to prevent future breakage.
+
+2009-07-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-forms.lisp, t/ps-tests.lisp:
+	Changed 'create' and 'slot-value' to treat reserved JS keywords as
+	strings.  Thanks to Alexey Lebedeff for the idea.
+
+	http://common-lisp.net/pipermail/parenscript-devel/2009-July/000558.html
+
+2009-07-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp: Revised PS literal mechanism to use
+	'symbol-name-to-js-string' instead of 'symbol-name' to check symbol
+	names for conflicts with reserved JS keywords. Added list of
+	currently reserved JS keyword names.
+
+2009-07-10  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: PS LOOP now supports ON.
+
+2009-07-10  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp: DESTRUCTURING-BIND can now handle
+	dotted and nested binding lists.
+
+2009-06-30  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Added support for COUNT, MINIMIZE and
+	MAXIMIZE to PS-LOOP.
+
+2009-06-30  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Extended PS-LOOP to allow explicit
+	accumulation variables (declared by INTO as in "sum x into y").
+
+2009-07-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp: Rewrote 'ps' macro to expand into
+	'with-output-to-string' instead of 'concatenate,' which gives better
+	runtime performance.
+
+2009-06-18  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp: Added the 'chain' convenience macro for
+	method call chaining (ex: (chain ($ "foo") (bar x z) (baz 5)) =>
+	$('foo').bar(x, z).baz(5);)
+
+2009-06-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp: Changed destructuring-bind to use let*
+	instead of let in its macroexpansion.  Bug report due to Scott Bell.
+
+	http://common-lisp.net/pipermail/parenscript-devel/2009-June/000532.html
+
+2009-06-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed several special
+	forms that were not macroexpanding their arguments.  Bug reports thanks to Scott Bell.
+
+	http://common-lisp.net/pipermail/parenscript-devel/2009-June/000530.html
+
+2009-06-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Introduced 'function'
+	special form to further help with faking Lisp2 in JavaScript.  Previously, 'apply,' among others, did not recognize the second
+	namespace as introduced by flet/labels. Thanks to Scott Bell for the
+	bug report:
+
+	http://common-lisp.net/pipermail/parenscript-devel/2009-June/000529.html
+
+2009-06-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Fixed 'flatten' to correctly handle lists with
+	non-nil cdr (ie '(1 . 2)).  Thanks to Scott Bell for the bug report.
+
+	http://common-lisp.net/pipermail/parenscript-devel/2009-June/000528.html
+
+2009-05-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp: Changed process-html-forms-lhtml loop in
+	lib/ps-html.lisp from 'loop' to 'do' due to bug in CLISP's 'loop'
+	implementation (this also made the code shorter).  Thanks to Olaf Ruppert <oruppert@googlemail.com> for the bug report.
+
+2009-05-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed some special forms
+	that weren't macro-expanding their arguments.
+
+2009-05-14  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/special-forms.lisp, src/utils.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: let/let* no longer gensym variable names
+	when they are not bound in enclosing lexical scopes, resulting in
+	prettier output ("var x = 1", instead of "var x1 = 1") in typical
+	usage of let.
+
+2009-05-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp: Made compiled-form-to-string use
+	write-string instead of printc, which results in a much more
+	efficient ps*.
+
+2009-05-08  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: Added support for supplied-p parameters to
+	optional and keyword arguments.
+
+2009-05-08  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp: Extended DESTRUCTURING-BIND to allow
+	NIL bindings to indicate a place should be ignored, the way that CL
+	LOOP does.
+
+2009-05-09  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, parenscript.asd,
+	src/compilation-interface.lisp, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/package.lisp,
+	src/special-forms.lisp, src/utils.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Substantially modified the way Parenscript
+	compilation and macro-expansion take place. This gives control of
+	macroexpansion to special forms, and lets Parenscript do things like
+	fake being a Lisp2 (different function and variable namespaces), and
+	overall makes Parenscript compilation look a lot more like CL
+	compilation.
+
+2009-05-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed bug where macrolet
+	and symbol-macrolet special forms were always compiling their
+	implicit progn bodies to statements.
+
+2009-05-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Reimplemented flet and
+	labels to use the same renaming tricks as the let/let* patch to
+	correctly implement lexical scoping.
+
+2009-05-03  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, parenscript.asd, src/compiler.lisp,
+	src/lib/ps-macro-lib.lisp, src/namespace.lisp, src/package.lisp,
+	src/printer.lisp, src/special-forms.lisp, src/utils.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Implemented LET and LET* by variable
+	renaming, which provides the correct scoping semantics, and
+	simplifies both the producing and the produced code.  Removed the "." and "[]" name-mangling conventions from
+	symbol-to-js-string. Any code that uses symbols such as
+	"foo.bar[baz]" will now issue a warning, and needs to be rewritten
+	to use standard Lisp accessors. This is needed for variable renaming
+	to work, and is an extension of the patch that eliminated the
+	".method" method-calling convention.  Thanks to Daniel Gackle and Dough Hoyte for opening my eyes to this
+	technique, which was right in front of me all along.
+
+2009-05-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Removed unused function val-to-string from
+	utils.lisp
+
+2009-04-29  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/compiler.lisp,
+	src/package.lisp, src/special-forms.lisp: Added file compilation and
+	eval-when facilities (patch from Red Daly).
+
+2009-04-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Fixed bug with incorrectly
+	parenthesized if expressions.  Thanks to Daniel Gackle for the bug report.
+
+2009-04-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/namespace.lisp, src/printer.lisp, src/special-forms.lisp,
+	src/utils.lisp, t/package-system-tests.lisp: Fixed non-uniform
+	handling of quoted symbols that manifested itself in broken package
+	obfuscation.  Thanks to Red Daly for the bug report.
+
+2009-04-27  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/special-forms.lisp,
+	t/ps-tests.lisp: Fixed bug in keyword argument handling (patch
+	thanks to Red Daly).
+
+2009-04-22  Kelly McDonald <kelly@jehu.(none)>
+
+	* docs/reference.lisp: method trick was yanked in
+	79630c82ac03066ceb1dac50015eb6b7a2151bbe but the documentation makes
+	it look as if you can still do this.  A further note with something about a backwards incompatible change
+	might also be useful
+
+2009-04-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp: Fixed typo in ps-macro-lib.lisp
+
+2009-04-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Added the colon character (:) to the list of
+	special characters that have special translations in
+	symbol-to-js-string.
+
+2009-04-13  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/package.lisp, src/special-forms.lisp, t/ps-tests.lisp,
+	t/test.lisp: Introduced the *js-target-version* special variable,
+	which is designed to control which version of JavaScript Parenscript
+	is emitting code for. This can be used to emit shorter code for
+	certain constructs (this patch uses this facility to generate
+	shorter keyword-handling code for JS version 1.6 and later).
+
+2009-04-13  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/namespace.lisp, src/special-forms.lisp: Got
+	rid of 'ensure-ps-symbol' internal function (at this point all it
+	was doing was polluting the PS package).
+
+2009-04-12  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Added destructuring lists to PS-LOOP.
+
+2009-04-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/utils.lisp: Removed some unnecessary code
+	that ignored an anaphor in define-ps-special-form (declare
+	(ignorable sufficed.
+
+2009-04-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/printer.lisp, src/special-forms.lisp,
+	t/ps-tests.lisp: Changed representation of expression blocks and
+	'if' to look more like JS in intermediate code.
+
+2009-04-12  Vladimir Sedach <vas@oneofus.la>
+
+	* : commit ba417109ddd2303e50b21d4ad8371ebe923abf46 Author: Vladimir
+	Sedach <vas@oneofus.la> Date:   Sun Apr 12 17:16:12 2009 -0600
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* parenscript.asd, src/lib/ps-dom.lisp, src/package.lisp: Added a
+	file PS-DOM with handy utility macros for DOM functionality, e.g.
+	Lispy ways of accessing offsetWidth, offsetHeight, etc.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Added several new
+	utility macros, including a primitive DESTRUCTURING-BIND.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Modified the way the PS-LOOP does SUM (it
+	now gensyms an accumulation var rather than accepting INTO) and
+	added COLLECT to work the same way.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Added a macro
+	WITH-LAMBDA that's useful for wrapping one or more statements up
+	into an expression.
+
+2009-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Updated tests to reflect changes in latest
+	patches from Daniel Gackle.
+
+2009-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, src/special-forms.lisp, t/ps-tests.lisp: Fixed
+	'lisp' form to produce code that captures enclosing lexical scope
+	correctly in 'ps' macro (broke it in my previous patch 0ce67a33),
+	added unit tests to check for expansion in correct environment.
+
+2009-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-loop.lisp, src/package.lisp, src/utils.lisp: Exported
+	'loop' from Parenscript package, moved utility functions to
+	src/utils.lisp.
+
+2009-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Updated tests to reflect changes in latest
+	patches from Daniel Gackle.
+
+2009-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, src/special-forms.lisp, t/ps-tests.lisp: Fixed
+	'lisp' form to produce code that captures enclosing lexical scope
+	correctly in 'ps' macro (broke it in my previous patch 0ce67a33),
+	added unit tests to check for expansion in correct environment.
+
+2009-04-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-loop.lisp, src/package.lisp, src/utils.lisp: Exported
+	'loop' from Parenscript package, moved utility functions to
+	src/utils.lisp.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: Restored the old psmacro for LISP
+	evaluation, because the new special form wasn't working.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: When turning a quoted list into a JS
+	array, compile elements that are NIL as "null", not "[]". There is
+	no way to make JS completely consistent with Lisp here, because NIL
+	means two different things in JS (null or an empty list) where it
+	means only one thing in Lisp. We have to pick one thing in this
+	context, and "[null]" is more common than "[[]]".
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/printer.lisp, src/special-forms.lisp: Quoted symbols should be
+	emitted as literal strings, not converted first to JS symbols,
+	otherwise symbols with characters like * and ? will be emitted as
+	"star" and "what", which makes sense only if you're trying to define
+	a function or variable name, but not if you're generating arbitrary
+	strings.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/special-forms.lisp: Generate "[]" rather than "new Array()"
+	for concision.
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/lib/ps-loop.lisp: Changed PS-LOOP to emit DO* (i.e. normal JS
+	for-loop code) rather than DO. It was originally written when DO
+	meant DO* (in today's terms). Using DO here makes the generated code
+	slower and breaks a bunch of our existing cases. Also, DO* produces
+	more idiomatic JS code and should be the default case (there is
+	unfortunately no single default here that gives all the desired
+	behavior, but this is a better tradeoff).
+
+2009-04-11  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/compilation-interface.lisp: Use WITH-OUTPUT-TO-STRING instead
+	of CONCATENATE, because the latter fails when there are too many
+	arguments (this happens in Clozure more often than SBCL).
+
+2009-04-06  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp, src/package.lisp,
+	src/printer.lisp, src/special-forms.lisp, src/utils.lisp,
+	t/ps-tests.lisp, t/reference-tests.lisp: Modified the PS compiler to
+	produce an intermediate representation that looks like raw
+	JavaScript in s-exp notation.  Removed the doeach macro.
+
+2009-04-05  Vladimir Sedach <vas@oneofus.la>
+
+	* t/package-system-tests.lisp, t/ps-tests.lisp: Changed tests to
+	reflect Daniel Gackle's keyword arguments patch.
+
+2009-04-02  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/compiler.lisp, src/special-forms.lisp: Initialize keyword
+	arguments from js ARGUMENTS, allowing keywords to also be passed as
+	normal function arguments without an error being thrown.
+
+2009-04-01  Daniel Gackle <danielgackle@gmail.com>
+
+	* parenscript.asd, src/lib/ps-loop.lisp: Added a partial
+	implementation of LOOP to PS.
+
+2009-04-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/utils.lisp: Made the ignore declaration in
+	define-ps-special-form be generated on the condition that 'expecting
+	is used in the body. While it's not an error to use variables
+	previously declared ignored, it does raise annoying compiler
+	warnings in some Lisps.
+
+2009-04-04  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/printer.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Removed compile-time constant string
+	concatenation from the Parenscript printer, which was significantly
+	slowing down compilation.
+
+2009-03-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/package.lisp, src/printer.lisp,
+	src/special-forms.lisp: Changed the definition of
+	define-ps-special-form to make "expecting" an anaphor.
+
+2009-03-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/printer.lisp, src/special-forms.lisp,
+	t/ps-tests.lisp: Changed the implementation of quote from being
+	special cased in several Parenscript internal functions to a
+	Parenscript macro. This makes the code simpler and allows for
+	extensibility of how quoted forms are translated. One example is
+	quoted strings being translated to JavaScript array literals.
+
+2009-03-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp, src/package.lisp: Renamed
+	*html-empty-tag-aware-p* to *ps-html-empty-tag-aware-p* and
+	*html-mode* to *ps-html-mode* to not clash with CL-WHO symbols, but
+	still follow the same naming convention.
+
+2009-03-12  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/build.sh, docs/tutorial.lisp: Removed tutorial.lisp from
+	repository (it is now updated and placed online in HTML format:
+	http://common-lisp.net/project/parenscript/tutorial.html)
+
+2009-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp, src/package.lisp, t/ps-tests.lisp: Changed
+	ps-html generators to behave more like CL-WHO when it comes to
+	XML/SGML, self-closing/empty tags. Changed the name of
+	*self-closing-tags-p* flag to *html-empty-tag-aware-p*, added
+	*html-mode* parameter.
+
+2009-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* t/reference-tests.lisp: Regenerated reference-tests.lisp from
+	reference doc with latest changes.
+
+2009-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* t/package-system-tests.lisp, t/ps-tests.lisp, t/test.lisp: Rewrote
+	some unit tests to simplify code.
+
+2009-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/package.lisp: Added ps-doc*
+	function to PS compilation interface.
+
+2009-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp: Added example of closure symbol-map usage for
+	obfuscate-package in reference doc.
+
+2009-03-05  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp: Removed literal backspace character from the
+	JS escape sequence part of the reference doc since it caused an
+	error when generating PDFs.
+
+2009-02-28  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, t/reference-tests.lisp: Added note about
+	printing special characters to escape sequences to the reference.
+
+2009-02-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-dom-symbol-exports.lisp: Added all symbols from DOM levels
+	1 and 2, Window working draft to the DOM symbol export convenience
+	packages (used with obfuscation). Moved non-standard DOM symbols to
+	their own package. Removed the Prototype symbol export convenience
+	package.
+
+2009-02-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, t/ps-tests.lisp: Fixed the 'pi'
+	symbol-macro.
+
+2009-02-09  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp: Introduced the "funcall" macro (which
+	really doesn't do anything - only CL needs it because of the weird
+	way it treats form evaluation).
+
+2009-02-09  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/js-expander.el: Updated js-expander to work with the latest
+	CVS version of SLIME.
+
+2009-02-08  Vladimir Sedach <vas@oneofus.la>
+
+	* runtime/ps-runtime-lib.lisp: Added 'reduce' function to runtime
+	lib.
+
+2009-02-08  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Fixed a bug where
+	variable initializations inside for loops were being compiled as
+	statements instead of expressions.
+
+2009-02-06  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/special-forms.lisp, t/ps-tests.lisp:
+	Implemented 'flet' and 'labels' as PS macros.
+
+2009-02-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp, t/ps-tests.lisp: Made who-ps-html handle
+	multiple html forms correctly (ie - things like (:ul (:li) (:li))).
+
+2009-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/special-forms.lisp: Changed let to not introduce any extra
+	variables (for parallel binding) when only one variable is being
+	bound.
+
+2009-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp,
+	src/js-dom-symbol-exports.lisp, src/printer.lisp,
+	src/special-forms.lisp, t/ps-tests.lisp, t/reference-tests.lisp: Got
+	rid of the "(.method-name object args)" method-calling convention.
+	It breaks package prefixing/obfuscation, and while sometimes a handy
+	shortcut it obscures how method calls are really done, and
+	introduces a redundant way of doing them which complicates
+	code-walkers and (future) attempts at Parenscript compiler
+	open-implementation facilities.
+
+2009-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp: Changed the @ (slot-value composition
+	macro) not to do the dollar sign thing if the first argument is a
+	string ('$' is a Prototype library function), and not to do spurious
+	macroexpansion.
+
+2009-02-02  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compilation-interface.lisp,
+	t/ps-tests.lisp, t/reference-tests.lisp: Defined ps-inline as a PS
+	macro in addition to a CL macro.
+
+2009-02-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/ps-tests.lisp: Fixed bug where expressions
+	could not be applied correctly (ex - ((or a b) c) did not compile to
+	"(a||b)(c)").
+
+2009-02-01  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp, src/special-forms.lisp,
+	t/ps-tests.lisp: Modified the Parenscript macro facilities so that
+	defpsmacro and define-ps-symbol-macro define their macros in their
+	lexical environment (previously they were always defining in the
+	null lexical environment).  This cleared up the implementation of the macro facilities, and now
+	defmacro and define-symbol-macro explicitly define macros in the
+	null lexical environment inside Parenscript code (the behavior is
+	unchanged and the only one that makes sense since Parenscript code
+	is translated and not evaluated, but previously this was not obvious
+	from looking at the implementation).
+
+2009-01-28  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors: Added Daniel Gackle and William Halliburton to the
+	list of contributors.
+
+2009-01-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/package.lisp: Added
+	symbol-to-js to the deprecated interface since it was used in
+	several 3rd party libraries (despite not being exported).
+
+2009-01-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-dom-symbol-exports.lisp, src/lib/ps-html.lisp,
+	src/package.lisp: Made the ps-html macros generate self-closing
+	tags.
+
+2009-01-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/namespace.lisp: Made the package symbol obfuscator be able to
+	take closures, for more interesting obfuscation possibilities (ex:
+	using various Unicode characters).
+
+2009-01-19  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/js-dom-symbol-exports.lisp: Added convenience
+	packages that export JS and browser DOM symbols, to be used to make
+	package obfuscation work.
+
+2008-12-30  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp: Changed the capitalization of "ParenScript"
+	to "Parenscript" in the reference.
+
+2008-12-30  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compilation-interface.lisp,
+	src/deprecated-interface.lisp, src/package.lisp, src/printer.lisp,
+	src/special-forms.lisp, t/package-system-tests.lisp,
+	t/ps-tests.lisp, t/test.lisp: Modified the printer so that PS and
+	PS-INLINE compile and print Parenscript code at macro-expansion
+	time. Renamed COMPILE-SCRIPT to PS1* and got rid of its
+	output-stream argument.
+
+2008-12-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Added an
+	implementation of 'elt' to ps-macro-lib.
+
+2008-12-30  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/{firebug-tracing.cl => firebug-tracing.lisp},
+	parenscript.asd, {src/lib => runtime}/ps-runtime-lib.lisp: Added a
+	"runtime" directory for runtime libs and moved ps-runtime-lib there.
+
+2008-12-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp: Fixed content handling in ps-who-html.
+
+2008-12-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp, t/ps-tests.lisp:
+	Added Daniel Gackle <danielgackle@gmail.com>'s contributed []
+	(nested) array literal macro to the macro library.
+
+2008-12-07  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/js-expander.el: Changed extras/js-expander.el to work with
+	the latest CVS snapshot of SLIME.
+
+2008-12-07  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/firebug-tracing.cl: Added William Halliburton
+	<whalliburton@gmail.com>'s tracing macro to extras folder.
+
+2008-12-07  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, t/package-system-tests.lisp: Made operator
+	precedence handling not throw away symbol package information.  This fixed a bug where for example (ps (#:new)) => ";" instead of
+	"new();".
+
+2008-12-06  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Added a few more unit tests related to fixes in
+	previous patches.
+
+2008-12-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/printer.lisp, src/special-forms.lisp,
+	t/ps-tests.lisp: Fixed compilation of caller argument lists. Changed
+	the handling of keyword symbols in the process. Now they are no
+	longer output as JavaScript variables, but as strings. The former
+	behavior was a hack introduced to get around some (in hindsight)
+	deficient macrology in an application that used Parenscript, while
+	the latter behavior is more CL-like in that it compiles a
+	self-evaluating object to a self-evaluating object. Thanks to Daniel
+	Gackle for the suggestion on the treatment of keywords.
+
+2008-12-05  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/package.lisp, t/test-package.lisp: Got rid
+	of parenscript-symbol object; special forms and macros are now
+	regular Common Lisp symbols so that the package system works as
+	expected.
+
+2008-12-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Exported
+	concat-string CL/PS utility function/macro.
+
+2008-12-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp: Fixed unterminating recursion in who-ps-html
+	when element has attributes but no content.
+
+2008-12-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/namespace.lisp, src/package.lisp,
+	src/utils.lisp: Renamed symbol-to-js to symbol-to-js-string and
+	exported it.
+
+2008-12-03  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp: Corrected reference doc to explain 'var'
+	special form as 'global variable' instead of 'function variable.'
+
+2008-11-25  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/lib/ps-html.lisp,
+	src/lib/ps-macro-lib.lisp, src/package.lisp, src/utils.lisp,
+	t/ps-tests.lisp, t/reference-tests.lisp: Implemented who-ps-html,
+	which is like the ps-html macro but taking CL-WHO like syntax.
+	Changed the behavior of ps-html to preserve the case of tag and
+	attribute symbols when printing.
+
+2008-11-17  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Added a bunch of unit tests from recent bug
+	reports.
+
+2008-11-15  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp, src/special-forms.lisp: Overhauled operator
+	precedence handling.  In particular the changes here cleaned up unary operator handling,
+	which was badly broken.
+
+2008-11-15  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp, t/ps-tests.lisp: Corrected the defaultf
+	psmacro for cases where the rhs value is false in JS.  This affected &optional and &key default parameters in lambda lists.  Thanks to Daniel Gackle for the bug report.
+
+2008-08-29  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: Revise slot-value fix to not print useless
+	parens.  Now prints: "foo.bar.baz" rather than "(foo.bar).baz"
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: js-slot-value printer now handles generic
+	operators passed as the object.  (slot-value (or a b c) 'd) now works correctly.
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: Updated js-aref for expression-precedence fixes.
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: Updated operator-precedence to handle more
+	cases.  It now correctly deals with aref, slot-value and unary operators.
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: Reordered expression-precedence clauses to match
+	precedence.
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: Fixed AREF when an expression is passed as the
+	array.  (aref (or a b c) 0) now works.  Thanks to Daniel Gackle for the bug report.
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp: Compile anything that follows a unary JS
+	operator as an expression.  Thanks to: Daniel Gackle <danielgackle@gmail.com>
+
+2008-08-22  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp: Improved handling of quoted symbols in
+	CASE.  (case val ('a (b)))      ; now produces an error, just like: (case
+	val (('a 'b) (c))) ; did before.  Thanks to: Daniel Gackle <danielgackle@gmail.com>
+
+2008-08-17  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp: Corrected the definition of ps:length.  Thanks to Daniel Gackle for pointing out the problem and the most
+	obvious solution.
+
+2008-05-12  Travis Cross <tc@traviscross.com>
+
+	* t/ps-tests.lisp: Added a test for correct output of the JS:in
+	operator.
+
+2008-05-12  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp: Output JS operators in lowercase.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp: Updated so as to ps-intern fewer extraneous
+	symbols.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/deprecated-interface.lisp, src/package.lisp: Deprecated
+	define-script-symbol-macro since it was part of the public
+	interface.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Updated the define-script-symbol-macro export to
+	define-ps-symbol-macro.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Reorganized the package exports.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Corrected parameter docstring.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp, src/printer.lisp: Moved the definition of
+	ps-convert-op-name since we compile compile.lisp before
+	printer.lisp.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/namespace.lisp, src/printer.lisp, src/special-forms.lisp:
+	Added some symbol mangling fixes.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp: Fixed one remaining
+	define-script-symbol-macro.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp, src/namespace.lisp, src/package.lisp:
+	Introduced ps-symbols and removed use of :parenscript-special-forms
+	package.  The idea here is to stop abusing the CL package system while still
+	allowing the user control of the PS environment.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp: Whitespace fix.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/compilation-interface.lisp, src/compiler.lisp,
+	src/printer.lisp, src/special-forms.lisp: Changed script-* to ps-*
+	across the board for consistency.
+
+2008-04-05  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp: Quoted parens in a docstring to make Emacs
+	happy.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp, src/special-forms.lisp: Intern all special form
+	symbols in the :parenscript-special-forms package.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Exported PI.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Exported hyperbolic trig symbols.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Rearranged math-related exports.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp: Added handling for PI.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp, src/special-forms.lisp: Relocated the
+	definitions for the 1+ and 1- psmacros with the other math
+	functions.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp: Implemented equivalents for the CL
+	hyperbolic trigometric functions.
+
+2008-04-01  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp, src/package.lisp: Added PS-ONCE-ONLY macro
+	building helper.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp: Rearranged math psmacros to match the
+	order that the corresponding functions appear in the HyperSpec.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Added support for
+	SQRT function.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Added support for LOG
+	function.  Thanks to: Daniel Gackle <danielgackle@gmail.com>
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/lib/ps-macro-lib.lisp: Updated atan to support two arguments
+	as in CL.  ATAN with two arguments translates into atan2 in JS.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* t/ps-tests.lisp: Added a couple of test cases for object literals.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* t/ps-tests.lisp: Updated the blank-object-literal test for the now
+	correct behavior.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp: Added {} to *ps-literals*.  Using {} as a literal to create an empty object literal was only
+	working by accident previously.  When not in the function position,
+	{} was being compiled as a JS variable rather than an
+	object-literal, which just happened to work sometimes.  In concert
+	with correctly checking symbols that aren't in the parenscript
+	package, this should provide for more reliable behavior.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp: Updated ps-literal-p to correctly identify
+	literal symbols without regard to the symbol's package.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* t/test.lisp: Silence an unused variable warning.
+
+2008-03-31  Travis Cross <tc@traviscross.com>
+
+	* src/compiler.lisp: Updated ps-special-form-p to correctly identify
+	a special form even if the symbol identifying the special form is in
+	the wrong package.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* docs/reference.lisp, t/reference-tests.lisp: Cleaned up and
+	standardized indentation of JS code in the reference documentation.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* contributors: Added myself to the list of contributors.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* extras/js-expander.el, src/compilation-interface.lisp,
+	src/package.lisp: Added a mechanism for expanding parenscript forms
+	in a clean environment.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Removed deprecated exports that are no longer
+	implemented.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Cleaned up and rearranged the package exports a
+	bit.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* docs/introduction.lisp, docs/reference.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Updated the documentation and test cases.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* docs/introduction.lisp, src/compiler.lisp,
+	src/deprecated-interface.lisp, src/lib/ps-html.lisp,
+	src/package.lisp, src/parse-lambda-list.lisp, src/printer.lisp,
+	src/special-forms.lisp, src/utils.lisp: Some minor comment and
+	whitespace cleanup.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* docs/pbook.py, src/compiler.lisp, src/parse-lambda-list.lisp,
+	src/special-forms.lisp, src/utils.lisp, t/ps-tests.lisp,
+	t/test.lisp: Whitespaceification: removed indentation tabs
+	throughout project.  ...and replaced each tab with 8 spaces.  Tab indentation had
+	previously been used inconsistently and was dominated by space-based
+	indentation.  In the future, disable indent-tabs-mode in emacs! (setq indent-tabs-mode nil)
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp, src/printer.lisp, src/special-forms.lisp:
+	Improved, extended, and refactored iteration special forms.   * Added support for DO*.   * DO now does parallel assignment.   * DO/DO* now correctly support init-forms such as:      (do (a (b) (c 1) (d 1 (1+ d))) ...)  * DO/DO*/DOTIMES/DOLIST/DOEACH now support return values via a
+	   lambda transform.   * DOEACH now supports implicit key/value destructuring, e.g.:      (doeach ((key val) arr res) ...)  * Added labeled-for to facilitate creating labeled for loops.   * Restructured low level printer operators to better match the    underlying JS.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp: Updated let1-dynamic to clean up its
+	temporary stack variable after use.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp, src/special-forms.lisp: Added setq and psetq.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp, src/special-forms.lisp: Added psetf.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp: Aliased let to simple-let.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp, src/special-forms.lisp: Added simple-let, which
+	does parallel binding without a lambda.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp, src/special-forms.lisp: Added simple-let* and
+	aliased let* to it.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp, src/special-forms.lisp: Added lexical-let.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/special-forms.lisp: Greatly simplified implementation of
+	lexical-let*.
+
+2008-03-30  Travis Cross <tc@traviscross.com>
+
+	* src/printer.lisp, src/special-forms.lisp: Added support for
+	breaking and continuing to arbitrary labels.
+
+2008-02-26  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Whitespace standardization in src/package.lisp.
+
+2008-02-26  Travis Cross <tc@traviscross.com>
+
+	* src/package.lisp: Corrected spelling error.
+
+2008-02-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp, t/ps-tests.lisp: Added #\= to *special-chars*.  Now you can write boolean= function names.  As requested by Daniel Gackle.
+
+2008-02-01  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/special-forms.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Fixed bug where (setf x (- x 1 2)) yielded x
+	-= 1 - 2.
+
+2007-12-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-html.lisp: Made the ps-html facility work both in
+	Parenscript and in Common Lisp.
+
+2007-12-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/ps-macro-lib.lisp, src/package.lisp: Added 'concatenate'
+	to Parenscript macro utilities.
+
+2007-12-26  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, parenscript.asd, src/lib/css.lisp,
+	src/lib/{js-html.lisp => ps-html.lisp}, src/lib/{js-utils.lisp =>
+	ps-macro-lib.lisp}, src/lib/{js-lib.lisp => ps-runtime-lib.lisp},
+	src/package.lisp, src/utils.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Renamed src/lib Parenscript library files,
+	got rid of Parenscript CSS system.
+
+2007-12-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/functional.lisp, src/lib/js-lib.lisp, src/package.lisp:
+	Moved functional runtime PS utilities from src/libs/functional.lisp
+	into *ps-lisp-library* in src/lib/js-lib.lisp.
+
+2007-12-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/special-forms.lisp, t/ps-tests.lisp: Fixed
+	literals error.  Introduced by patch: Mon Dec 24 17:02:17 MST 2007 Vladimir Sedach
+	<vas@oneofus.la>
+
+2007-12-25  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compiler.lisp, src/package.lisp,
+	src/printer.lisp, src/special-forms.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Introduced special global variables to
+	Parenscript; renamed let and lexical-let to let* and lexical-let*,
+	and made let itself expand to let* until parallel assignment let is
+	implemented.
+
+2007-12-25  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/namespace.lisp, src/package.lisp,
+	src/special-forms.lisp, t/package-system-tests.lisp,
+	t/ps-tests.lisp: Made special forms be compiled into named functions
+	in a new package, parenscript-special-forms, and introduced literal
+	special forms.  The literal special forms should improve error messages and
+	debugging.
+
+2007-12-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, t/ps-tests.lisp, t/reference-tests.lisp: Made
+	with-ps-gensyms prefix the given gensym with the symbol-to-js name
+	of the given gensym variable binding if an explicit prefix was not
+	provided.  (the rationale for this is to save a little typing)
+
+2007-12-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/printer.lisp, src/special-forms.lisp: Got rid of js-keyword
+	form.
+
+2007-11-15  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/compiler.lisp, src/js-macrology.lisp, src/package.lisp,
+	src/ps-macrology.lisp, src/special-forms.lisp: Moved code from
+	js/ps-macrology.lisp to special-forms.lisp; straightened out
+	parenscript.asd to use serial file dependencies; unexported
+	defaultf; rewrote rebind as lexical-let and exported it.
+
+2007-11-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/js-macrology.lisp, src/printer.lisp,
+	src/ps-macrology.lisp, t/ps-tests.lisp: Fixed problems with
+	expressions being compiled to statements inside expression progns;
+	introduced mechanism for declaring variables in expression scopes;
+	refactored function compilation.
+
+2007-11-04  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/internal/architecture.txt, docs/internal/asdf.lisp: Removed
+	outdated internal documentation.
+
+2007-11-04  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/js-lib.lisp: Fixed definition of *ps-lisp-library*.
+
+2007-11-04  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/lib/js-lib.lisp, src/lib/js-utils.lisp,
+	src/package.lisp: Added length, @, mapcar utility functions,
+	exported all library function symbols.
+
+2007-11-01  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Added define-symbol-macro unit test.
+
+2007-11-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/ps-macrology.lisp: Fixed
+	define-symbol-macro.
+
+2007-10-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parse-lambda-list.lisp, t/ref2test.lisp: Prettied up
+	whitespace and comments in parse-lambda-list, ref2test.
+
+2007-10-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp: Got rid of unused functions in util.lisp, slight
+	refactoring.
+
+2007-10-29  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/package.lisp, src/{js-translation.lisp => printer.lisp}: More
+	refactorings to the printer, exported symbols that control printer
+	behavior.
+
+2007-10-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp: Refactored Parenscript printer code.
+
+2007-10-16  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compilation-interface.lisp,
+	t/ps-tests.lisp, t/reference-tests.lisp: Changed ps-inline to take a
+	form instead of an implicit progn as a parameter; gave ps-inline and
+	ps-inline* optional arguments.  The optional arguments bind *js-quote-char* to make it more
+	convenient to use the two functions with different html generation
+	macros (which may use single or double quotes to delimit attribute
+	values).
+
+2007-10-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp, src/lib/js-html.lisp: Further ignore
+	declarations for unused variables.  Thanks to: Kevin Layer <layer@known.net>
+
+2007-10-14  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parse-lambda-list.lisp: In parse-lambda-list, made the
+	need-symbol function work.  Otherwise the conditional always evaluated to nil.
+
+2007-10-14  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: In package definition, instead of exporting
+	"NIL", exported (symbol-name 'nil).  The latter causes a problem in case-sensitive Allegro.  Thanks to Kevin Layer for the patch.
+
+2007-10-14  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp, src/js-translation.lisp,
+	src/ps-macrology.lisp: Declared unused "expecting" variables in
+	ps-special-form definitions ignorable.  Thanks to: Kevin Layer <layer@known.net>
+
+2007-10-14  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd: Made ps-macrology depend on utils in parenscript
+	asdf definition.  Thanks to: Kevin Layer <layer@known.net>
+
+2007-10-11  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, src/ps-macrology.lisp, t/ps-tests.lisp: Fixed a
+	bug in how symbol-macros were defined, expanded, and used by
+	'with-slots'.
+
+2007-10-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp: Made defun, defvar and doeach expect a
+	symbol as the "name" argument instead of trying to
+	compile-parenscript-form :expecting :expression.
+
+2007-10-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compiler.lisp, t/ps-tests.lisp: Made the handling of keyword
+	symbols across Parenscript be consistent with the treatment of other
+	symbols.  Previously a keyword symbol was being treated as a quoted symbol by
+	Parenscript.
+
+2007-09-23  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/{parser.lisp => compiler.lisp},
+	src/ps-macrology.lisp, t/ps-tests.lisp: Added support for &whole
+	arguments in ps macro lambda lists; renamed parser.lisp to
+	compiler.lisp.
+
+2007-09-20  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Added macro environment unit test that tests for
+	bug "inconsistent expansion of local macro".
+
+2007-09-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp, t/ps-tests.lisp: Eliminated unwinding of macro
+	environment for macro expansions.  This fixed bug:   "Bug: inconsistent expansion of local macro" submitted by Daniel   Gackle on 2007-09-12
+
+2007-08-28  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.lisp: Updated description of PS-HTML in the
+	tutorial.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/namespace.lisp, src/package.lisp,
+	src/ps-macrology.lisp, t/package-system-tests.lisp,
+	t/reference-tests.lisp: Revised obfuscation facility, added its
+	description to the reference, and added more unit tests.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, t/reference-tests.lisp: Added description of
+	namespace system to the reference.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/js-translation.lisp, t/ps-tests.lisp:
+	Fixed problem with (- 1). Unary operator "-" didn't like number
+	constants.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, t/reference-tests.lisp: Added defsetf and
+	(defun (setf examples to the reference.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp: Added ps-print method specialized on null
+	to ignore printing of nils.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp, src/ps-macrology.lisp, t/ps-tests.lisp:
+	Added code to remove unreachable constant forms from progn.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/introduction.lisp: Updated the introduction doc.
+
+2007-08-24  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/compilation-interface.lisp: Updated the
+	ParenScript reference.
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.lisp: Updated the ParenScript tutorial.
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp: Removed js-file and js-script from
+	deprecated interface.  These were helper macros for net.html.generator from AllegroServe,
+	which really don't belong in ParenScript.
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp, t/ps-tests.lisp: Fixed error where function call
+	arguments weren't getting compiled to expressions.
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp, src/js-translation.lisp, t/ps-tests.lisp:
+	Added the ability to compile cond to expressions.
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp: Made progn expressions with a single
+	statement print as that statement alone (without parens).
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp, src/js-translation.lisp, t/ps-tests.lisp:
+	Made if-expressions return null instead of undefined when else
+	clause wasn't specified.
+
+2007-08-23  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp, t/ps-tests.lisp: Fixed cond.
+
+2007-08-22  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/parser.lisp: Fixed the problem
+	with compile-parenscript-form not being called with the right
+	"expecting" value if a macroexpansion took place.
+
+2007-08-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp: Updated and fixed the deprecated
+	interface.
+
+2007-08-20  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Updated the documentation and test suite to reflect the fact that
+	html is now ps-html and the ps-inline special form no longer exists.
+
+2007-08-20  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.lisp: Removed mention of old package system from
+	tutorial.lisp.
+
+2007-08-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/js-macrology.lisp,
+	src/package.lisp: Removed js and ps-inline as special forms; added
+	ps-inline and ps-inline*.  js and ps-inline didn't make any sense as special forms.
+
+2007-08-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/js-html.lisp, src/package.lisp: Changed html -> ps-html;
+	reorganized packages.lisp exports.  Using 'html' creates a conflict with any number of existing html
+	generation libraries.
+
+2007-08-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/ps-macrology.lisp, t/ps-tests.lisp: Replaced
+	optional-args as the keyword-object-handling parameter with a
+	gensym.
+
+2007-08-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/ps-macrology.lisp, t/ps-tests.lisp: Added in-line code to
+	support &rest arguments.
+
+2007-08-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp: Added correct indentation to the printer.
+
+2007-08-15  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/js-ugly-translation.lisp: Removed
+	js-ugly-translation.
+
+2007-08-15  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Updated the reference and tests to reflect some small changes in the
+	new printing code.  ...such as the current lack of line breaks and spaces before some
+	opening parens.  Also added a few new unit tests.
+
+2007-08-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/js-macrology.lisp,
+	src/js-translation.lisp: Reworked printing implementation to get rid
+	of dwim-join and gratuitious consing.  Now everything gets written to a stream.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp, t/ps-tests.lisp: Fixed type bug with
+	printing slot-value with obj/slot being a non-list.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/package-system-tests.lisp: Redid package system unit tests.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Exported the new naming and namespace interface
+	functions and variables in package.lisp.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp, t/reference-tests.lisp, t/test.lisp: Modified
+	ParenScript tests to reflect the big compiler refactoring.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp: Updated reference.lisp to reflect recent
+	changes.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/builtin-packages.lisp,
+	src/compilation-interface.lisp, src/deprecated-interface.lisp,
+	src/js-macrology.lisp, src/js-source-model.lisp,
+	src/js-translation.lisp, src/lib/js-html.lisp,
+	src/lib/js-utils.lisp, src/namespace.lisp, src/package.lisp,
+	src/parser.lisp, src/ps-macrology.lisp, src/ps-source-model.lisp:
+	Big refactoring of the ParenScript compiler.
+
+2007-08-12  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/js-expander.el: Updated js-expander to use ps:ps instead of
+	js:js.
+
+2007-08-06  Red Daly <reddaly@gmail.com>
+
+	* src/parser.lisp: remove lingering format string
+
+2007-08-06  Red Daly <reddaly@gmail.com>
+
+	* src/parser.lisp: fixed DEFSCRIPTMACRO evaluation problem that
+	caused load/compilation problems DEFSCRIPTMACRO and other similar macros were not expanding into but
+	were instead side-effecting macro definitions.
+
+2007-08-06  Red Daly <reddaly@gmail.com>
+
+	* src/package.lisp: removed file compilation exports for now
+
+2007-08-04  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/package.lisp, src/paren-asdf.lisp: Removed
+	parenscript.asdf
+
+2007-08-04  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/package.lisp, src/reader.lisp: Removed parenscript.reader
+
+2007-08-04  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/builtin-packages.lisp,
+	src/js-translation.lisp, src/namespace.lisp, src/parser.lisp,
+	src/ps-macrology.lisp, src/ps-source-model.lisp: Moved
+	package-related code to namespace.lisp, added back
+	*enable-package-system*.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/ps-macrology.lisp, t/ps-tests.lisp: Added
+	(defun (setf...
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/ps-macrology.lisp, src/utils.lisp, t/ps-tests.lisp: Stopped
+	abuse of set-difference implementation-dependent ordering in
+	defsetf.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/ps-macrology.lisp, t/ps-tests.lisp: Fixed order of evaluation
+	in defsetf long form.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/ps-macrology.lisp, t/ps-tests.lisp: Added short-form defsetf.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp, t/ps-tests.lisp: Fixed (return).
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/ps-macrology.lisp, t/ps-tests.lisp: Renamed
+	options to optional-args, added unit test for defun foo
+	(&optional...
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/parser.lisp: Restored
+	special-form getting and setting by symbol-na.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Added a more meaningful error message to
+	compile-to-expression.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp, src/ps-macrology.lisp: Cleaned up macro-defining
+	code, fixed handling of special forms in script-expand-form.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp: Removed reference to
+	without-packages in deprecated-interface.lisp.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Added a more informative print-object method for
+	script-package.
+
+2007-08-03  Red Daly <reddaly@gmail.com>
+
+	* src/compilation-interface.lisp, src/js-macrology.lisp,
+	src/js-translation.lisp, src/package.lisp,
+	src/parse-lambda-list.lisp, src/parser.lisp, src/ps-macrology.lisp:
+	keyword/optional fixes, slot-value accepts many slot names I also fixed some problems with nil serialization and decomposed the
+	compile-parenscript-form function into a generic function with
+	different behavior depending on the type of form.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/builtin-packages.lisp, src/parser.lisp: Fixed handling of
+	uninterned symbols.
+
+2007-08-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/builtin-packages.lisp, src/deprecated-interface.lisp,
+	src/js-macrology.lisp, src/js-translation.lisp, src/package.lisp,
+	src/parser.lisp, src/ps-macrology.lisp,
+	t/package-system-tests.lisp, t/ps-tests.lisp, t/test.lisp: Changed
+	package system so that symbols in parenscript, javascript and
+	parenscript-user are non-prefixed. Made symbols in unknown packages
+	be treated as though they were in parenscript-user by default. Added
+	a prefix string preference to PS packages. Removed all
+	*enable-package-system* stuff.
+
+2007-08-02  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/js-macrology.lisp, src/parser.lisp,
+	src/ps-macrology.lisp, t/ps-tests.lisp, t/reference-tests.lisp:
+	Added defsetf long-form.
+
+2007-08-02  Vladimir Sedach <vas@oneofus.la>
+
+	* t/test.lisp: Disabled Boyer-Moore matching for cl-ppcre in js
+	normalization code.  (breaks on Unicode lisps, on by default in PPCRE)
+
+2007-08-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-translation.lisp, src/parser.lisp: Slightly more
+	informative error messages for symbol-abuse.
+
+2007-08-01  Vladimir Sedach <vas@oneofus.la>
+
+	* : Removed manual.pdf from source control.
+
+2007-08-01  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Fixed ps* not being found when
+	special-form-symbol assertion is triggered.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/package.lisp: UNDO: Added
+	functions to set up and tear down a persistent compilation
+	environment.
+
+2007-08-01  Red Daly <reddaly@gmail.com>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/js-macrology.lisp, src/js-translation.lisp, src/package.lisp,
+	src/paren-asdf.lisp, src/parse-lambda-list.lisp, src/parser.lisp,
+	src/ps-macrology.lisp, src/utils.lisp, t/ps-tests.lisp: fixed minor
+	issues with advanced lambda lists, additional quoted-nil hack
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp, src/package.lisp: Added functions
+	to set up and tear down a persistent compilation environment.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp, src/parser.lisp: Unexported ps-to-string.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: UNDO: Changed "Lisp package already has
+	corresponding script package" error to warning.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: UNDO: Setup *compilation-environment* to have a
+	working default value.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Added tests for 'nil and slot-value nil patches.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp: Changed slot-value so that (slot-value foo
+	nil) is now "foo" instead of "foo.null"
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Fixed handling of quoted nil.  'nil should be the same as nil, however ''nil isn't.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Changed "Lisp package already has corresponding
+	script package" error to warning.  Besides being annoying for users, it prevented package tests from
+	being idempotent.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/deprecated-interface.lisp: Started work on implementing
+	deprecated compatibility interface by Attila Lendvai's idea.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Setup *compilation-environment* to have a working
+	default value.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/lib/js-utils.lisp: Added null macro.  Thanks to Daniel Gackle for suggestion.
+
+2007-07-31  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Corrected export of defmacro+/ps names.
+
+2007-07-31  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/deprecated-interface.lisp: make deprecation warning a only a
+	style-warning
+
+2007-07-31  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/ps-macrology.lisp: fix rebind
+
+2007-07-31  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/ps-macrology.lisp: prefix ( in a comment
+
+2007-07-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/deprecated-interface.lisp,
+	src/package.lisp: Revised PS interface and deprecated function list
+	based on user input.
+
+2007-07-30  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp: Added tests for previous script* eval bug.
+
+2007-07-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp: Fixed bug where script* wasn't
+	evaluating its arguments as promised.
+
+2007-07-30  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Changed names of defmacro+/js forms to ps, made
+	the special-form compilation error message be more informative.
+
+2007-07-30  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/tutorial.lisp: Changed tutorial to reflect factoring out of
+	the HTML generation code of Portable Allegroserve, addition of PS
+	package system.
+
+2007-07-28  Red Daly <reddaly@gmail.com>
+
+	* src/parser.lisp: define-script-symbol-macro added
+
+2007-07-28  Daniel Gackle <danielgackle@gmail.com>
+
+	* src/parser.lisp: defscriptmacro single string body fix A js macro that evaluates to a string literal can't be used:   (defjsmacro blah () "abc")   (js (blah)) =>      "null;" This seems wrong. For one thing, other literals work fine:   (defjsmacro blah () 123)   (js (blah)) =>      "123" For another, Lisp behaves differently:   (defmacro blah () "abc")   (blah) =>       "abc" Actually, I'd rather use a symbol macro but it appears there is no
+	define-symbol-macro in Parenscript and in this case symbol-macrolet
+	is not convenient.  Signed-off-by: Red Daly <reddaly@gmail.com>
+
+2007-07-27  Red Daly <reddaly@gmail.com>
+
+	* src/package.lisp, src/paren-asdf.lisp: paren-asdf hack to make
+	parenscript-compile-op use load-op's dependencies
+
+2007-07-27  Red Daly <reddaly@gmail.com>
+
+	* docs/internal/asdf.lisp, parenscript.asd,
+	src/compilation-interface.lisp, src/deprecated-interface.lisp,
+	src/package.lisp, src/paren-asdf.lisp, src/ps-macrology.lisp: ASDF
+	interaction for Parenscript files see the new paren-asdf.lisp and updated compilation-interface.lisp
+	files for implementation details.  The function
+	COMPILE-SCRIPT-SYSTEM compiles all the system's files and outputs
+	them to a single stream.  Currently it compiles each file
+	separately; in the future we will probably need to compile the whole
+	program and then translate it.
+
+2007-07-26  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp, src/js-translation.lisp, t/ps-tests.lisp,
+	t/reference-tests.lisp: Fixed slot-value-conditional bug.  (slot-value object slot) should now handle cases where object is an
+	arbitrary expression correctly.
+
+2007-07-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/compilation-interface.lisp, src/deprecated-interface.lisp,
+	src/js-macrology.lisp, src/package.lisp, src/parser.lisp,
+	src/ps-macrology.lisp: Cleaned up deprecated interface, added
+	Lisp/ParenScript macro-defining macros back to parser.lisp.
+
+2007-07-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-macrology.lisp: Removed redundant math library functions.  (more comprehensive ones are in lib/js-utils.lisp)
+
+2007-07-25  Red Daly <reddaly@gmail.com>
+
+	* parenscript.asd, src/builtin-packages.lisp,
+	src/compilation-interface.lisp, src/js-macrology.lisp,
+	src/package.lisp, src/parser.lisp, src/ps-macrology.lisp,
+	src/reader.lisp, t/ps-tests.lisp, t/ref2test.lisp,
+	t/reference-tests.lisp, t/test-package.lisp, t/test.lisp: usable
+	package system The package system is now fairly usable.  package.lisp and
+	builtin-packages.lisp now intelligently share symbols.  It is also
+	possible to completely ignore any package system functionality.
+
+2007-07-24  Red Daly <reddaly@gmail.com>
+
+	* docs/internal/architecture.txt,
+	docs/internal/notes-and-links.txt, parenscript.asd,
+	src/compilation-interface.lisp, src/deprecated-interface.lisp,
+	src/js-macrology.lisp, src/{source-model.lisp =>
+	js-source-model.lisp}, src/js-translation.lisp,
+	src/js-ugly-translation.lisp, src/macrology.lisp, src/package.lisp,
+	src/parser.lisp, src/ps-macrology.lisp, src/ps-source-model.lisp,
+	src/reader.lisp, t/package-system-tests.lisp, t/ps-tests.lisp,
+	t/test.lisp: bulk of package system, reader, and other refactoring
+
+2007-07-20  Red Daly <reddaly@gmail.com>
+
+	* src/compilation-interface.lisp, src/macrology.lisp,
+	src/parser.lisp: eval-when special form Added the EVAL-WHEN special form to the Parenscript language.  It
+	works similarly to the EVAL-WHEN form in Lisp.  It has the following
+	form: (eval-when body-forms-language? (situation*) body-forms*) SITUATION is either :compile-toplevel or :execute.  BODY-FORMS-LANGUAGE is optional and either :parenscript or :lisp.
+	It defaults to :lisp when :COMPILE-TOPLEVEL is specified and
+	:parenscript when :EXECUTE is specified.  Parenscript's EVAL-WHEN is relevant when loading toplevel forms,
+	either from Parenscript files or from within Lisp.
+
+2007-07-20  Red Daly <reddaly@gmail.com>
+
+	* parenscript.asd, src/compilation-interface.lisp,
+	src/compile-js.lisp, src/defgenerics.lisp,
+	src/deprecated-interface.lisp, src/js-translation.lisp, src/{ =>
+	lib}/css.lisp, src/lib/functional.lisp, src/{ => lib}/js-html.lisp,
+	src/{ => lib}/js-utils.lisp, src/macrology.lisp, src/package.lisp,
+	src/parse-lambda-list.lisp, src/parser.lisp, src/reader.lisp,
+	src/source-model.lisp, t/ps-tests.lisp, t/test-package.lisp,
+	t/test.lisp: renaming and refactoring Changed the names of many functions and macros to get rid of the
+	symbols with "js" in them--its not Javascript, it's Parenscript!
+	Most of those symbols were renamed with "script" replacing "js".  Also changed the main compilation interfaces to use the function
+	COMPILE-SCRIPT and the macro SCRIPT from JS-COMPILE and JS
+	respectively.  Additionally, the first steps of the package system are included
+	(with the addition of a the SCRIPT-PACKAGE and
+	COMPILATION-ENVIRONMENT classes).  These are integrated into the
+	current compiler, though they probably break a few "traditional"
+	serialization methods, specifically because macro and special form
+	names are stored as symbols rather than strings and EQL comparisons
+	are used rather than STRING-EQUAL comparisons of the strings.  I have also split parser.lisp into parser.lisp and macrology.lisp.
+	Parser.lisp contains mechanisms for parsing Parenscript given an
+	input s-expression while macrology.lisp contains language
+	definitions that make use of the parsing mechanisms.  All tests now pass, though the documentation has gone slightly out
+	of date with the symbol renaming.  This will be fixed shortly.  More
+	tests and functionality need to be added to make the current
+	Parenscript compatable with the older semantics (as dicussed,
+	comparing macro/special form names based on their string values is
+	the main thing).
+
+2007-07-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/parser.lisp: Re-introduced 'with' special form.  (it got lost somewhere along the way)
+
+2007-07-14  Vladimir Sedach <vas@oneofus.la>
+
+	* t/ps-tests.lisp, t/test.lisp: Improved formatting/whitespace
+	removing code in tests.  Added slot-value-setf test.  Now all ps-tests pass.
+
+2007-07-13  Vladimir Sedach <vas@oneofus.la>
+
+	* docs/reference.lisp: Added documentation of new macro facilities.
+
+2007-07-12  Viktor Leis <viktor.leis@googlemail.com>
+
+	* src/parser.lisp: Added warnings when attempting to use reserved
+	Javascript keywords as variable or functions names.  Signed-off-by: Vladimir Sedach <vas@oneofus.la>
+
+2007-07-10  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-utils.lisp, src/parser.lisp: Added oddp, evenp utility
+	functions, added explanatory error message to js-compile-to-symbol.
+
+2007-07-03  Vladimir Sedach <vas@oneofus.la>
+
+	* src/utils.lisp, t/ps-tests.lisp: Improved symbol-to-js to handle
+	more complicated Javascript-like symbols.
+
+2007-07-03  Luca Capello <luca@pca.it>
+
+	* parenscript.asd, t/ps-tests.lisp, t/test.lisp: Factor out misc
+	tests into their own test file.  Signed-off-by: Vladimir Sedach <vas@oneofus.la>
+
+2007-07-02  Red Daly <reddaly@gmail.com>
+
+	* t/test.lisp: character encoding fixes in test.lisp
+
+2007-07-01  Luca Capello <luca@pca.it>
+
+	* t/test.lisp: t/test.lisp: typo, remove colon at line 82
+
+2007-07-01  Luca Capello <luca@pca.it>
+
+	* t/ref2test.lisp, t/reference-tests.lisp, t/test.lisp: add an
+	(eval-when ...) when defining a test suite
+
+2007-06-28  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-utils.lisp: Added divisors to ceiling, floor, round.
+
+2007-06-26  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors: Added Red Daly to contributors file.
+
+2007-06-26  Red Daly <reddaly@gmail.com>
+
+	* parenscript.asd, src/js-translation.lisp, src/js.lisp,
+	src/parser.lisp, src/source-model.lisp, src/utils.lisp: js.lisp
+	breakup Broke the js.lisp file up into several three files:
+	source-model.lisp, js-translation.lisp, and parser.lisp.  source-model.lisp: class definitions that correspond to the
+	Javascript AST.  (defjsclass forms for the most part) js-translation.lisp: functions for converting AST objects to
+	Javascript source code parser.lisp: macro definitions and the mechanisms for processing
+	Parenscript forms into AST objects.  See also:
+
+	http://common-lisp.net/pipermail/parenscript-devel/2007-June/000035.html
+
+2007-06-26  Red Daly <reddaly@gmail.com>
+
+	* src/compile-js.lisp, src/css.lisp, src/defgenerics.lisp,
+	src/js-html.lisp, src/js-utils.lisp, src/js.lisp, src/package.lisp,
+	src/utils.lisp: package rename
+
+2007-06-26  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-html.lisp, src/js.lisp: Refactored macro-related code,
+	changed "compiler macros" to special forms, added separate
+	namespaces for macros and symbol-macros, added full macro lambda
+	lists to macrolet, added support for docstrings to defjsmacro.
+
+2007-06-25  Vladimir Sedach <vas@oneofus.la>
+
+	* contributors: Added contributors file.
+
+2007-06-25  Vladimir Sedach <vas@oneofus.la>
+
+	* extras/js-expander.el: Added js-expander.el
+
+2007-06-22  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js.lisp: Added defmacro to ParenScript.
+
+2007-06-21  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js-utils.lisp: Renamed with-timeout to do-set-timeout, added
+	ignore errors.  Thanks to: John Fremlin <john@fremlin.org>
+
+2007-06-20  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js.lisp, src/package.lisp: Added defmacro+js
+
+2007-06-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/package.lisp: Exported defmacro/js
+
+2007-06-19  Vladimir Sedach <vas@oneofus.la>
+
+	* parenscript.asd, src/js-utils.lisp: Added js-utils file.
+
+2007-06-19  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js.lisp: Added the defmacro/js macro-defining macro.
+
+2007-06-16  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js.lisp: Added binary negation ~ operator.
+
+2007-06-15  Vladimir Sedach <vas@oneofus.la>
+
+	* src/js.lisp: setf slot-value patch
+
+2007-06-06  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fix: add parens around instanceof to make it work in
+	all situations
+
+2007-05-03  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/utils.lisp: Bah, speed up list-to-string by a few factors...
+
+2007-04-27  Ray Myers <ray.myers@gmail.com>
+
+	* src/js.lisp: Fix (- 1) and (incf/decf x 5) Fix the following incorrect (or at least unexpected) behavior in
+	ParenScript.  (js (- 1))  =>  "1;" (js (incf x 5))   => an error (js (decf x 5))
+	=> an error Signed-off-by: Attila Lendvai <attila.lendvai@gmail.com>
+
+2007-04-25  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Note in the warning that we are redefining a _js_
+	compiler macro
+
+2007-04-16  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Follow quote changes in SLOT-VALUE
+
+2007-04-16  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fixed (?) quoting mechanism (js:js (+ 42 '"FoooFFFOFOFooo")) => "42 + FoooFFFOFOFooo;" IOW, quote inside a parenscript form means to simply print the
+	quoted value as-is.  Among other things, this is useful for
+	inserting literal javascript into parenscript.  I hope it will not
+	break anything.
+
+2007-01-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* docs/reference.lisp, src/js-html.lisp: conditional attributes in
+	html-generator
+
+2006-11-15  Marijn Haverbeke <marijnh@gmail.com>
+
+	* src/js.lisp: add proper cond construct
+
+2006-11-22  Henrik Hjelte <henrik@evahjelte.com>
+
+	* t/reference-tests.lisp: Possible to make attributes conditionally
+	rendered with js-html generator
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* docs/reference.lisp, t/reference-tests.lisp, t/test.lisp: docs
+	updated for new setf optimization
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* src/js.lisp, t/test.lisp: bugfix method-call problem
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* t/test.lisp: moretests for method-call (dot-notation) syntax
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* src/js.lisp, t/test.lisp: bugfix commutative plus and minus
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* t/test.lisp: tests for some bugs Reported by: Marijn Haverbeke <marijnh@gmail.com>
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* parenscript.asd, t/ref2test.lisp, t/reference-tests.lisp: asdf
+	test-op added (asdf:operate 'asdf:test-op :parenscript)
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* : updated pdf manual for new with syntax
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* docs/build.sh: build.sh for documentation
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* docs/reference.lisp, t/reference-tests.lisp: Updated documentation
+	to reflect the new syntax of the with statement
+
+2006-11-15  Henrik Hjelte <henrik@evahjelte.com>
+
+	* t/test.lisp: make the test escape-sequences-in-string work again
+
+2006-10-03  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Added evenp and oddp
+
+2006-10-03  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Added assert for simple catch forms
+
+2006-09-01  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Killed the feature (js:js* '(let (a b) (+ a b))) =>
+	"var a = b; a + b;"
+
+2006-10-02  Luca Capello <luca@pca.it>
+
+	* docs/pbook.py: docs/pbook.py: correct faulty check for PDF output Frank K[_\c3_][_\bc_]ster discovered that docs/pbook.py produces
+	buggy LaTeX code, a faulty check for PDF output.  It doesn't show up
+	if you only try to create PDF.  But if you want to go the traditional route and produce dvi files
+	(and from that PostScript and maybe finally again PDF), this will
+	fail and still produce PDF.  The script itself doesn't do that (or
+	rather, it does that in fact but ignores the output in this first
+	run), but it's still an uglyness.  Moreover, it's completely useless, because the only package that
+	uses the information, graphicx, will detect the output format itself
+	(and in a proper way).    http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=390629
+
+2006-08-21  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Use symbol-name for op matching to fix various
+	bugs/surprises (e.g. `(foo::% 4 2))
+
+2006-07-21  Marijn Haverbeke <marijnh@gmail.com>
+
+	* src/js.lisp: Allow strings and numbers as slot names in object
+	literals
+
+2006-07-16  Marco Baringer <mb@bese.it>
+
+	* src/js2.lisp: Drop unused js2.lisp
+
+2006-07-16  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fix compilation of (.call (lambda () ...) arg1 ...),
+	add missing ()'s around the lambda
+
+2006-07-16  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fix compilation of ((foo) bar) -> foo()(bar)
+
+2006-07-16  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fixed js-with WARNING: this involves syntax change Previously the syntax of with was this:   (with (object)     body) now it's:   (with object     body) It was also broken when 'object' was an expression...
+
+2006-07-15  Henrik Hjelte <henrik.hjelte@evahjelte.com>
+
+	* docs/reference.lisp, src/js.lisp, t/reference-tests.lisp: bugfix
+	sometimes missing semicolons when joining js-body
+
+2006-07-11  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Rebind var in dolist to make also clisp happy import-macros-from-lisp was broken due to this.
+
+2006-07-11  Henrik Hjelte <henrik.hjelte@evahjelte.com>
+
+	* docs/reference.lisp, src/js.lisp, t/ref2test.lisp,
+	t/reference-tests.lisp: regex patch Suggested by: Lou Vanek <vanek@acd.net>
+
+2006-07-11  Henrik Hjelte <henrik.hjelte@evahjelte.com>
+
+	* docs/reference.lisp, t/reference-tests.lisp: documentation updated
+	about dollar char
+
+2006-07-11  Henrik Hjelte <henrik.hjelte@evahjelte.com>
+
+	* t/ref2test.lisp: Made ref2test work with cl-launch
+
+2006-07-07  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* parenscript.asd: Fix screwed-up asd file
+
+2006-07-07  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fixed instanceof
+
+2006-07-07  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* parenscript.asd, src/js.lisp, src/lib/functional.lisp: Added
+	src/lib/functional.lisp This is a first element of an parenscript library. The contents of
+	this file is to be compiled with parenscript and the result js
+	included in the host environment in one way or another.
+
+2006-07-07  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/compile-js.lisp: Added :eval-forms-p to
+	compile-parenscript-file
+
+2006-07-06  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Fix the return value of map-into
+
+2006-07-06  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Moved some macros towards the top of the file due to
+	dependencies In the long run we should cut js.lisp into several files. One
+	dealing with the basic infrastructure like macro expansion, and the
+	rest implementing the compiler based on this
+	infrastructure/utilities.
+
+2006-07-05  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Added map and map-into
+
+2006-07-05  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Shortened default gensym constant
+
+2006-07-04  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Don't use loop's initially clause to avoid a clisp
+	bug For details see:
+
+	http://sourceforge.net/tracker/index.php?func=detail&aid=1516684&group_id=1355&atid=101355
+
+2006-05-27  Marco Baringer <mb@bese.it>
+
+	* src/js.lisp: Make defjsmacro rend's docstring a comment so clisp
+	will stop complaining
+
+2006-05-13  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Move undefine-js-compiler-macro into an eval-when.  Reported by: William Halliburton <whalliburton@gmail.com>
+
+2006-05-12  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp, src/package.lisp: Added import-macros-from-lisp that
+	bring lisp macros into the js macroexpansion
+
+2006-05-10  Marco Baringer <mb@bese.it>
+
+	* src/compile-js.lisp, src/utils.lisp: Move compile-parenscript code
+	into a separate file so that it complies cleanly The problew is that compile-parenscript-file-to-string contains a
+	call to the macro js:js* this macro needs to be defined before we
+	compile the compile-parenscript-file-to-string function.
+
+2006-05-10  Marco Baringer <mb@bese.it>
+
+	* parenscript.asd: Use an explicit asdf:perform :after method
+	instead of :perform (load-op :after ...)
+
+2006-05-08  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/package.lisp, src/utils.lisp: Added compile-parenscript-file
+
+2006-05-08  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Added character type conversion
+
+2006-04-16  Attila Lendvai <attila.lendvai@gmail.com>
+
+	* src/js.lisp: Added a rebind js macro that rebinds variables on the
+	js side
+
+2006-04-01  Marco Baringer <mb@bese.it>
+
+	* src/package.lisp: Export defjsmacro
+
+2006-04-01  Marco Baringer <mb@bese.it>
+
+	* src/js.lisp: Added docstring for *js-quote-char*
+
+2006-04-01  Xan Lopez <xan.lopez@gmail.com>
+
+	* src/js.lisp: Add variable *js-quote-char* Signed-off-by: Marco Baringer <mb@bese.it>
+
+2006-02-26  Marco Baringer <mb@bese.it>
+
+	* src/js.lisp: Implement js-to-strings for the regex class
+
+2006-02-25  Marco Baringer <mb@bese.it>
+
+	* src/js.lisp, src/js2.lisp: #\$ is not a special javascript
+	character.  Reported by: Richard Morse <pukku@mac.com>
+
+2006-02-16  Luca Capello <luca@pca.it>
+
+	* docs/tutorial.lisp: remove docs/images and relative references in
+	tutorial.lisp
+
+2006-01-27  Luca Capello <luca@pca.it>
+
+	* : remove docs/reference.pdf, already included in manual.pdf
+
+2006-02-05  Marco Baringer <mb@bese.it>
+
+	* src/js.lisp: The #\Form is not a standard character name, use
+	#.(code-char 12) instead.
+
+2006-02-02  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* src/js.lisp, t/test.lisp: proper escape sequences in strings
+
+2006-02-01  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* docs/reference.lisp, src/js.lisp, t/ref2test.lisp,
+	t/reference-tests.lisp, t/test.lisp: ref2test finds reference.lisp
+	in docs dir
+
+2006-01-27  Luca Capello <luca@pca.it>
+
+	* parenscript-test.asd, parenscript.asd: merge parenscript-test.asd
+	into parenscript.asd
+
+2006-01-23  Luca Capello <luca@pca.it>
+
+	* introduction.lisp => docs/introduction.lisp, pbook.py =>
+	docs/pbook.py, reference.lisp => docs/reference.lisp, tutorial.lisp
+	=> docs/tutorial.lisp: move doc files to docs/
+
+2006-01-23  Luca Capello <luca@pca.it>
+
+	* parenscript-test.asd, ref2test.lisp => t/ref2test.lisp,
+	reference-tests.lisp => t/reference-tests.lisp, test-package.lisp
+	=> t/test-package.lisp, test.lisp => t/test.lisp: move test files to
+	t/ and modify parenscript-test.asd as well
+
+2006-01-23  Luca Capello <luca@pca.it>
+
+	* parenscript.asd, css.lisp => src/css.lisp, defgenerics.lisp =>
+	src/defgenerics.lisp, js-html.lisp => src/js-html.lisp, js.lisp =>
+	src/js.lisp, js2.lisp => src/js2.lisp, package.lisp =>
+	src/package.lisp, utils.lisp => src/utils.lisp: move source files to
+	src/ and modify parenscript.asd as well
+
+2006-01-23  Luca Capello <luca@pca.it>
+
+	* css.lisp, introduction.lisp, js.lisp, js2.lisp, ref2test.lisp,
+	reference-tests.lisp, reference.lisp, test.lisp, tutorial.lisp:
+	remove trailing spaces at endlines in *.lisp
+
+2006-01-22  Luca Capello <luca@pca.it>
+
+	* js-html.lisp, js.lisp, js2.lisp, package.lisp, ref2test.lisp,
+	reference.lisp, tutorial.lisp: remove trailing spaces at empty lines
+	in *.lisp
+
+2006-01-22  Luca Capello <luca@pca.it>
+
+	* pbook.py: pbook.py: convert endlines to Unix format
+
+2006-01-09  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* js-html.lisp: css-inline compiles with cmucl
+
+2005-12-19  Marco Baringer <mb@bese.it>
+
+	* js.lisp, package.lisp: New function gen-js-name-string This allows you to get a unique javascript name as a string and not
+	just as a symbol.
+
+2005-12-19  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* js.lisp, test.lisp: bugfix slot-value
+
+2005-12-18  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* js.lisp, ref2test.lisp, reference-tests.lisp, test.lisp: bug in
+	dwim-join
+
+2005-12-18  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* js-html.lisp, reference-tests.lisp, reference.lisp: css-inline
+	generator
+
+2005-12-17  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* parenscript-test.asd, ref2test.lisp, reference-tests.lisp,
+	reference.lisp, test.lisp: cleaned reference
+
+2005-12-16  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* parenscript-test.asd, ref2test.lisp, reference-tests.lisp,
+	test-package.lisp, test.lisp: tests from the reference
+
+2005-12-16  Henrik Hjelte <henrik.hjelte@poboxes.com>
+
+	* introduction.lisp: quotes in introduction
+
+2005-12-01  Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+
+	* defgenerics.lisp, js.lisp, parenscript.asd: Added defgenerics for
+	all the defmethods Ze style warnings! Zey drive me craaaazy.
+
+2005-11-15  Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+
+	* parenscript.asd: enable #+parenscript To integrate Parenscript with Araneida without requiring
+	Parenscript, I had to do some compile conditionals. This would make
+	it much easier.  Marco, eventually I am going to add this to every last one of your
+	projects.  ;-p
+
+2005-11-15  Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+
+	* css.lisp: need a function for css-inlining If you have code that needs to inline CSS across an array, it's
+	difficult to use the current macro.  Having a function helps -
+	mapping the macro to the function only completes things.
+
+2005-11-15  Alan-Shields <Alan-Shields@omrf.ouhsc.edu>
+
+	* css.lisp: Proper concatenation of inline CSS CSS-INLINE does a simple concatenation of the results of CSS
+	directives.  This looks like:         color:blacksize:200% Unfortunately, it should look like this:         color:black;size:200% It now does.
+
+2005-11-07  Luca Capello <luca@pca.it>
+
+	* COPYING: added COPYING file
+
+2005-11-07  Marco Baringer <mb@bese.it>
+
+	* .boring: Escape { and } chars in boring regexps
+
+2005-10-05  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Need to escape #\' in javascript strings
+
+2005-10-05  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Fix buf in JS-INLINE causing infinite macro expansion
+
+2005-09-12  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Add in checks to deal with functions/macros whose names
+	aren't symbols
+
+2005-09-05  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Use strings, and not symbols, to name javascript
+	functions/macros This effectivly flattens the namespace of javascript code. While
+	this change makes js similar to javascript, and removes the need to
+	export symbols from the JS package, it may break previous code which
+	depended on, for expample, js:and not being equivalent to js:and.
+
+2005-09-05  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Added support for literal objects ( "{ ... }" syntax)
+
+2005-08-31  Marco Baringer <mb@bese.it>
+
+	* package.lisp: Export cen-js-names and with-unique-js-names
+
+2005-08-15  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Added docstrings to previous patch
+
+2005-08-15  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Added GEN-JS-NAME and WITH-UNIQUE-JS-NAMES
+
+2005-08-15  Ivan Toshkov <itoshkov@gmail.com>
+
+	* js.lisp: Fixes the infinite loop problems of `dotimes' and
+	`dolist'.
+
+2005-08-15  Marco Baringer <mb@bese.it>
+
+	* package.lisp, parenscript.asd, tutorial.lisp: Parenscript,
+	documentation not withstandanding, does not depend on htmlgen
+
+2005-08-15  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Attempt to improve the conversion of (js ((lambda ...)
+	...))
+
+2005-08-15  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Introduce the JS-LAMBDA class. Make JS-DEFUN a subclass
+	of JS-LAMBDA
+
+2005-08-15  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Implement JS and JS-INLINE in terms of JS* and JS-INLINE*
+
+2005-08-14  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Symbols starting with #\: are left as is, no case
+	conversion or other mangling
+
+2005-08-14  Marco Baringer <mb@bese.it>
+
+	* js.lisp, package.lisp: Added JS* and JS-INLINE*.
+
+2005-08-14  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Javascript strings need to be quated with ' and not " to
+	avoid interfering with the surrounding HTML.
+
+2005-08-13  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Ugly hack to support ((lambda ...) ...)
+
+2005-08-13  Marco Baringer <mb@bese.it>
+
+	* parenscript.asd: Mention that I'm maintaining this version of
+	parenscript
+
+2005-08-13  Marco Baringer <mb@bese.it>
+
+	* parenscript.asd: Rename the system/package in the system
+	definition.  Just renaming the file doesn't cut it :(.
+
+2005-08-13  Marco Baringer <mb@bese.it>
+
+	* : Added images used in documentation
+
+2005-08-13  Marco Baringer <mb@bese.it>
+
+	* pbook.py: Added the pbook.py file used to generate the
+	documentation
+
+2005-08-08  Marco Baringer <mb@bese.it>
+
+	* js.lisp: Added declare ignore forms for unused function arguments
+
+2005-08-08  Marco Baringer <mb@bese.it>
+
+	* js.asd => parenscript.asd: Rename system def
+
+2005-07-26  Marco Baringer <mb@bese.it>
+
+	* .boring: Setup boringfile
+
+2005-07-26  Marco Baringer <mb@bese.it>
+
+	* css.lisp, introduction.lisp, js-html.lisp, js.asd, js.lisp,
+	js2.lisp, package.lisp, reference.lisp, tutorial.lisp, utils.lisp:
+	Added files from parenscript 0.1.0 as distributed by Manuel Odendahl
