@@ -16,8 +16,8 @@ overhead:
     Any piece of Parenscript code is runnable as-is. There are no
     JavaScript files to include.
   Native types:
-    Parenscript works entirely with native JavaScript data types. There
-    are no new types introduced, and object prototypes are not
+    Parenscript works entirely with native JavaScript data types.
+    There are no new types introduced, and object prototypes are not
     touched.
   Native calling convention:
     Any JavaScript code can be called without the need for
@@ -35,9 +35,18 @@ overhead:
 Parenscript is available via Quicklisp:
   (ql:quickload :parenscript)
 
-To run unit tests:
-  (ql:quickload :parenscript.tests)
+To run tests:
+  (ql:quickload :parenscript.tests :verbose t)
   (parenscript.tests:run-tests)
+
+  The included executable SBCL script ros-tests.lisp uses the roswell
+  implementation launcher [https://github.com/roswell/roswell] to
+  automatically run the Parenscript test suite in SBCL, CLISP,
+  Clozure Common Lisp, Allegro Common Lisp, ABCL, ECL, sequentially
+  in that order. To run the script, first make sure you have roswell
+  installed, then do ./ros-tests.lisp from the directory containing
+  Parenscript. Roswell will automatically install any needed Common
+  Lisp implementations.
 
 Contributing:
   Please send patches and bug reports to the mailing list:

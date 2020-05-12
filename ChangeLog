@@ -1,5 +1,7 @@
 2020-05-12  Vladimir Sedach  <vas@oneofus.la>
 
+        * README: Added instructions on using ros-tests.lisp script
+
         * docs/reference.html (Parenscript Reference Manual): Updated
         copyright year.
 
