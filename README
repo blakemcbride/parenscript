@@ -1,8 +1,8 @@
 This repo was cloned from https://gitlab.common-lisp.net/parenscript/parenscript.git
 because I was unable to fork the project on that site.
 
-My intent is to morderize the generated JavaScript and make it more
-convinient for general use.
+My intent is to modernize the generated JavaScript and make it more
+convenient for general use.
 
 Blake McBride
 blake@mcbridemail.com
