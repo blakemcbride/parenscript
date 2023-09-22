@@ -1,3 +1,17 @@
+This repo was cloned from https://gitlab.common-lisp.net/parenscript/parenscript.git
+because I was unable to fork the project on that site.
+
+My intent is to morderize the generated JavaScript and make it more
+convinient for general use.
+
+Blake McBride
+blake@mcbridemail.com
+https://github.com/blakemcbride/parenscript
+
+--------------------------------------------------------------------
+
+Original README
+
 Parenscript is a translator from an extended subset of Common Lisp to
 JavaScript. Parenscript code can run almost identically on both the
 browser (as JavaScript) and server (as Common Lisp).
