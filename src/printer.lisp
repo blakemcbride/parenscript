@@ -342,7 +342,7 @@ vice-versa.")
 
 (defprinter ps-js:var (var-name &optional (value (values) value?) docstring)
   (when docstring (print-comment docstring))
-  "var "(psw (symbol-to-js-string var-name))
+  "let "(psw (symbol-to-js-string var-name))
   (when value? (psw " = ") (print-op-argument 'ps-js:= value)))
 
 (defprinter ps-js:label (label statement)
@@ -356,7 +356,7 @@ vice-versa.")
 (defprinter ps-js:for (vars tests steps body-block)
   "for ("
   (loop for ((var-name . var-init) . remaining) on vars
-     for decl = "var " then "" do
+     for decl = "let " then "" do
        (psw decl (symbol-to-js-string var-name) " = ")
        (print-op-argument 'ps-js:= var-init)
        (when remaining (psw ", ")))
@@ -370,7 +370,7 @@ vice-versa.")
   (ps-print body-block))
 
 (defprinter ps-js:for-in (var object body-block)
-  "for (var "(ps-print var)" in "(ps-print object)") "
+  "for (let "(ps-print var)" in "(ps-print object)") "
   (ps-print body-block))
 
 (defprinter (ps-js:with ps-js:while) (expression body-block)
