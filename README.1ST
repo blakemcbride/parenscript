@@ -28,7 +28,13 @@ blake@mcbridemail.com
 
 FUTURE
 
-I don't like the code it generates for top-level let or progn.  It basically ignores them.
+1. I don't like the code it generates for top-level let or progn.  It basically ignores them.
 However, in JavaScript it is convenient to wrap code at the top level in a self-executing
-function in order to encapsulate an environment.  Ignoring top-level progn or let
+function in order to encapsulate an environment as in a namespace.  Ignoring top-level progn or let
 makes that feature inconvenient or unnatural to represent.
+
+2. All files should start with 'use strict';
+
+3. Add support for browser source maps.
+
+4. Defmacro doesn't appear to work
