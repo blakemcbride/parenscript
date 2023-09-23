@@ -292,7 +292,7 @@
    #:typeof
    #:instanceof
    #:new
-   #:create
+   #:ps-create
 
    ;; slot access
    #:with-slots

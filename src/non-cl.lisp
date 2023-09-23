@@ -78,7 +78,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; objects
 
-(define-expression-operator create (&rest arrows)
+(define-expression-operator ps-create (&rest arrows)
   (let ((allow-accessors (js-target-at-least "1.8.5")))
     (cons
      'ps-js:object
@@ -228,7 +228,7 @@
 (defpsmacro objectp (x)
   `(string= (typeof ,x) "object"))
 
-(define-ps-symbol-macro {} (create))
+(define-ps-symbol-macro {} (ps-create))
 
 (defpsmacro [] (&rest args)
   `(array ,@(mapcar (lambda (arg)

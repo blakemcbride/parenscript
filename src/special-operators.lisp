@@ -252,7 +252,7 @@
         `(progn
            ,@(unless returning-values?
                '((setf __PS_MV_REG '())))
-           (throw (create
+           (throw (ps-create
                    :__ps_block_tag ',tag
                    :__ps_value     ,value)))))
 

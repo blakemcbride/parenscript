@@ -71,7 +71,7 @@ for (var i = 0, j = arr[i]; i < 10; i = ++i, j = arr[i]) {
 ;;; way, using keyword arguments.
 
 (ps
-  (create :foo "foo"
+  (ps-create :foo "foo"
           :bla "bla"))
 
 ;; compiles to
