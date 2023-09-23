@@ -312,7 +312,7 @@
    #:while
 
    ;; global var
-   #:var
+   ;#:var
 
    ;; control flow
    #:try
