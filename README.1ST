@@ -2,7 +2,7 @@
 This file should be read first.
 
 I cloned the original repo of this package 9/22/2023 and made some changes.
-So, this file superceeds other documentation.  So far, I made the following 
+So, this file supersedes other documentation.  So far, I made the following 
 changes:
 
 1.  Made this version easy to load without interfering with the QuickLisp
@@ -25,3 +25,10 @@ That's it!
 Blake McBride
 blake@mcbridemail.com
 
+
+FUTURE
+
+I don't like the code it generates for top-level let or progn.  It basically ignores them.
+However, in JavaScript it is convenient to wrap code at the top level in a self-executing
+function in order to encapsulate an environment.  Ignoring top-level progn or let
+makes that feature inconvenient or unnatural to represent.
