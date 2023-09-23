@@ -126,10 +126,31 @@ if by ps*. If *parenscript-stream* is bound, writes the output to
     (unless *parenscript-stream*
       (get-output-stream-string output-stream))))
 
-(defun ps-compile-file (source-file &key (element-type 'character) (external-format :default))
+(defun ps-compile-file-2 (source-file &key (element-type 'character) (external-format :default))
   "Opens file as input stream and calls ps-compile-stream on it."
   (with-open-file (stream source-file
                           :direction :input
                           :element-type element-type
                           :external-format external-format)
     (ps-compile-stream stream)))
+
+(defun remove-lisp-extension (filename)
+    (let ((length (length filename)))
+          (if (and (>= length 5)
+                                (string= (subseq filename (- length 5)) ".lisp"))
+                      (subseq filename 0 (- length 5))
+                              filename)))
+
+(defun ps-compile-file (file-name)
+  "Compile file-name.LISP to file-name.JS"
+  (setq file-name (remove-lisp-extension file-name))
+  (let ((lisp-file-name (concatenate 'string file-name ".lisp"))
+        (js-file-name (concatenate 'string file-name ".js"))
+        (saved-os *parenscript-stream*))
+    (with-open-file (os js-file-name
+                        :direction :output
+                        :if-exists :overwrite
+                        :if-does-not-exist :create)
+      (setq *parenscript-stream* os)
+      (ps-compile-file-2 lisp-file-name)
+      (setq *parenscript-stream* saved-os))))

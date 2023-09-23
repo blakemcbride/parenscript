@@ -1,0 +1,27 @@
+
+This file should be read first.
+
+I cloned the original repo of this package 9/22/2023 and made some changes.
+So, this file superceeds other documentation.  So far, I made the following 
+changes:
+
+1.  Made this version easy to load without interfering with the QuickLisp
+version of this package.
+
+2.  Corrected a couple of symbol name clashes with SBCL
+
+3.  Tested with SBCL, CLISP, CCL, ECL, and ABCL.  (MKCL does not work.)
+
+4.  Enhance PS-COMPILE-FILE to read from a .lisp file and write to a .js file.
+
+USAGE
+
+(load "parenscript")
+(use-package :ps)
+(ps-compile-file "myfile")
+
+That's it!
+
+Blake McBride
+blake@mcbridemail.com
+
